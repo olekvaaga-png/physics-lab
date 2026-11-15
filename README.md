@@ -14,7 +14,8 @@ The whole lab is one self-contained file, [`index.html`](index.html). It needs n
 2. Change the model with the parameters on the right. Presets under the list set up instructive starting points.
 3. Read the **explanation panel** next to the list. It says what is happening right now, what the setting you just changed does, what the view shows, how it compares with something familiar from engineering, and what it means in the real world. Views about fields, mass and the vacuum also have an **In more depth** section (Planck's constant, fields and particles, what mass means in a field, the Higgs field, where the proton's mass comes from, the vacuum, matter and forces). Where the shape of the extra dimensions matters (origins of mass, compactification, strings, fields, scales and more), a box with a small living Calabi–Yau figure explains the connection and links to the related views. The panel is in Norwegian by default, with a button for English, and can be hidden. On narrow screens it opens from the **Explanation** tab on the left edge.
 4. Under the picture, **What happens here** gives a fuller explanation and says whether the view is calculated or only illustrated.
-5. The clock under the picture shows simulation time. Use pause, reset and the speed slider to control it. In 3D views, drag to rotate and scroll or pinch to zoom. Nothing rotates by itself by default: every 3D view has an **Automatic rotation** switch at the top of its parameters, and the ⟳ button above the picture is the same switch for the camera.
+5. The clock under the picture shows simulation time. Use pause, reset and the speed slider to control it. In 3D views, drag to rotate and scroll or pinch to zoom. Views open zoomed a little out. Nothing rotates by itself by default: every 3D view has an **Automatic rotation** switch at the top of its parameters, and the ⟳ button above the picture is the same switch for the camera. In the Dimension Explorer, choosing a rotation plane starts the cube turning in that plane, and the angle slider moves with it.
+6. On a phone the list of views folds away after you pick one, and a **Parameters** tab on the right edge opens the parameters.
 
 ## What is in it
 
@@ -22,8 +23,8 @@ The whole lab is one self-contained file, [`index.html`](index.html). It needs n
 
 | View | What it shows |
 | --- | --- |
-| Dimension Explorer | A cube in 0 to 9 dimensions, rotated in any plane (including a true double rotation in 4D) and projected into 3D. |
-| Calabi–Yau Geometry | A 2D slice of the Fermat quintic, a six-dimensional Calabi–Yau space, plus a point sample of the whole space. The surface pulses: the clock moves which slice is cut (the constant C in z₁⁵ + z₂⁵ = C), and for this shape every neighbouring slice is the same surface at another size. Every frame is an exact slice; the sliders stay still and the changing value is shown on screen. Under Motion the surface can also be turned in 4D like the tesseract, so its 3D shadow folds and flows, and the viewing angle and the slice can be moved; rotation is off by default. The shape itself does not change. |
+| Dimension Explorer | A cube in 0 to 9 dimensions, rotated in any plane (including a true double rotation in 4D) and projected into 3D. Picking a plane turns the cube in that plane. |
+| Calabi–Yau Geometry | A 2D slice of the Fermat quintic, a six-dimensional Calabi–Yau space, plus a point sample of the whole space. By default the shape changes: one of the quintic’s 101 shape parameters (ε in Σ zⱼ⁵ + ε·z₀³z₁z₂ = 0) is turned back and forth, so every frame is an exact slice of a different, valid Calabi–Yau space. In nature the shape would be fixed; the view walks through possible shapes. Under Motion you can instead choose a pulse (the clock moves which slice is cut, which for this shape only changes the size), turn the surface in 4D like the tesseract, turn the viewing angle or move the slice. Rotation is off by default. |
 | String Vibration Lab | A classical string with fixed ends or a closed loop, built from up to eight harmonics. |
 | Classical Closed Ring | Small waves on a supported ring, and the exact collapse of a free relativistic circular string, with its worldsheet. |
 | Compactification Explorer | Momentum and winding on a curled-up circle, and T-duality (R ↔ 1/R, n ↔ w). |
@@ -43,7 +44,7 @@ The whole lab is one self-contained file, [`index.html`](index.html). It needs n
 
 | View | What it shows |
 | --- | --- |
-| Hydrogen orbitals and spectrum | Exact orbitals for hydrogen and for any element from helium to oganesson with one electron left (hydrogen-like ions, with the element's atomic mass in the reduced mass), for any n, l and m, as a 3D cloud or a 2D slice, with energy levels and the emitted spectral lines. Starts in the ground state 1s. |
+| Hydrogen orbitals and spectrum | Exact orbitals for hydrogen and for any element from helium to oganesson with one electron left (hydrogen-like ions, with the element's atomic mass in the reduced mass), for any n, l and m, as a 3D cloud or a 2D slice, with energy levels and the emitted spectral lines. Starts in the ground state 1s. For any element you can also show **the whole neutral atom**: all its electrons in the correct shells (K, L, M, …, with the ground-state configuration, including the known exceptions such as Cr, Cu, Pd and Au), as a 3D cloud with a cutaway or as a 2D plot of each shell's electron density with a ring diagram. Shell sizes are approximate (Slater's screening rules). |
 | Crystal energy bands | A two-band model showing metals, semiconductors and insulators. |
 
 ### Oscillators and fields

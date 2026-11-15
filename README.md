@@ -23,7 +23,7 @@ The whole lab is one self-contained file, [`index.html`](index.html). It needs n
 | View | What it shows |
 | --- | --- |
 | Dimension Explorer | A cube in 0 to 9 dimensions, rotated in any plane (including a true double rotation in 4D) and projected into 3D. |
-| Calabi–Yau Geometry | A 2D slice of the Fermat quintic, a six-dimensional Calabi–Yau space, plus a point sample of the whole space. The surface turns in 4D like the tesseract, so its 3D shadow folds and flows; the viewing angle and the slice can also move. The shape itself does not change. |
+| Calabi–Yau Geometry | A 2D slice of the Fermat quintic, a six-dimensional Calabi–Yau space, plus a point sample of the whole space. The surface turns in 4D like the tesseract, so its 3D shadow folds and flows, and it pulses as the slice moves back and forth; the viewing angle and the slice can also be moved. The shape itself does not change. |
 | String Vibration Lab | A classical string with fixed ends or a closed loop, built from up to eight harmonics. |
 | Classical Closed Ring | Small waves on a supported ring, and the exact collapse of a free relativistic circular string, with its worldsheet. |
 | Compactification Explorer | Momentum and winding on a curled-up circle, and T-duality (R ↔ 1/R, n ↔ w). |

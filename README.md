@@ -10,7 +10,7 @@ The whole lab is one self-contained file, [`index.html`](index.html). It needs n
 
 ## How to use it
 
-1. Pick a view in the list on the left.
+1. The lab opens in the Dimension Explorer, with a tesseract turning in the XY plane. Pick another view in the list on the left.
 2. Change the model with the parameters on the right. Presets under the list set up instructive starting points.
 3. Read the **explanation panel** next to the list. It says what is happening right now, what the setting you just changed does, what the view shows, how it compares with something familiar from engineering, and what it means in the real world. Views about fields, mass and the vacuum also have an **In more depth** section (Planck's constant, fields and particles, what mass means in a field, the Higgs field, where the proton's mass comes from, the vacuum, matter and forces). Where the shape of the extra dimensions matters (origins of mass, compactification, strings, fields, scales and more), a box with a small living Calabi–Yau figure explains the connection and links to the related views. The panel is in Norwegian by default, with a button for English, and can be hidden. On narrow screens it opens from the **Explanation** tab on the left edge.
 4. Under the picture, **What happens here** gives a fuller explanation and says whether the view is calculated or only illustrated.
@@ -23,7 +23,7 @@ The whole lab is one self-contained file, [`index.html`](index.html). It needs n
 | View | What it shows |
 | --- | --- |
 | Dimension Explorer | A cube in 0 to 9 dimensions, rotated in any plane (including a true double rotation in 4D) and projected into 3D. |
-| Calabi–Yau Geometry | A 2D slice of the Fermat quintic, a six-dimensional Calabi–Yau space, plus a point sample of the whole space. The surface turns in 4D like the tesseract, so its 3D shadow folds and flows, and it pulses as the slice moves back and forth; the viewing angle and the slice can also be moved. The shape itself does not change. |
+| Calabi–Yau Geometry | A 2D slice of the Fermat quintic, a six-dimensional Calabi–Yau space, plus a point sample of the whole space. The surface turns in 4D like the tesseract, so its 3D shadow folds and flows. It also pulses: the clock moves which slice is cut (the constant C in z₁⁵ + z₂⁵ = C), and for this shape every neighbouring slice is the same surface at another size. Every frame is an exact slice; the sliders stay still and the changing value is shown on screen. The viewing angle and the slice can also be moved. The shape itself does not change. |
 | String Vibration Lab | A classical string with fixed ends or a closed loop, built from up to eight harmonics. |
 | Classical Closed Ring | Small waves on a supported ring, and the exact collapse of a free relativistic circular string, with its worldsheet. |
 | Compactification Explorer | Momentum and winding on a curled-up circle, and T-duality (R ↔ 1/R, n ↔ w). |

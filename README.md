@@ -12,7 +12,7 @@ The whole lab is one self-contained file, [`index.html`](index.html). It needs n
 
 1. Pick a view in the list on the left.
 2. Change the model with the parameters on the right. Presets under the list set up instructive starting points.
-3. Read the **explanation panel** next to the list. It says what is happening right now, what the setting you just changed does, what the view shows, how it compares with something familiar from engineering, and what it means in the real world. It is in Norwegian by default, with a button for English, and can be hidden. On narrow screens it opens from the **Explanation** tab on the left edge.
+3. Read the **explanation panel** next to the list. It says what is happening right now, what the setting you just changed does, what the view shows, how it compares with something familiar from engineering, and what it means in the real world. Where the shape of the extra dimensions matters (origins of mass, compactification, strings, fields, scales and more), a box with a small living Calabi–Yau figure explains the connection and links to the related views. The panel is in Norwegian by default, with a button for English, and can be hidden. On narrow screens it opens from the **Explanation** tab on the left edge.
 4. Under the picture, **What happens here** gives a fuller explanation and says whether the view is calculated or only illustrated.
 5. The clock under the picture shows simulation time. Use pause, reset and the speed slider to control it. In 3D views, drag to rotate and scroll or pinch to zoom.
 

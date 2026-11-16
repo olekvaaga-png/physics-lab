@@ -6,18 +6,21 @@ An interactive laboratory for quantum mechanics, quantum fields and the ideas be
 
 The whole lab is one self-contained file, [`index.html`](index.html). It needs no installation, no server and no internet connection: download the file and open it in any modern browser (Chrome, Edge, Firefox or Safari), on a computer or a phone.
 
-*På norsk:* Labben er én HTML-fil. Åpne lenken over, eller last ned `index.html` og åpne den i en nettleser. Forklaringspanelet til venstre er på norsk som standard og kan byttes til engelsk.
+*På norsk:* Labben er én HTML-fil. Åpne lenken over, eller last ned `index.html` og åpne den i en nettleser. Forklaringspanelet til venstre og læringssenteret er på norsk som standard og kan byttes til engelsk.
 
 ## How to use it
 
-1. The lab opens in the Dimension Explorer, with a tesseract in the XY plane. Pick another view in the list on the left.
+1. The lab opens in the Dimension Explorer, with a tesseract in the XY plane. Pick another view in the list on the left. The views are grouped by field of physics: geometry, classical mechanics and waves, quantum mechanics, atomic physics, solid-state physics, statistical physics, relativity and quantum fields, string theory (marked as hypothesis), scales and cosmology, and an overview.
 2. Change the model with the parameters on the right. Presets under the list set up instructive starting points.
 3. Read the **explanation panel** next to the list. It says what is happening right now, what the setting you just changed does, what the view shows, how it compares with something familiar from engineering, and what it means in the real world. Views about fields, mass and the vacuum also have an **In more depth** section (Planck's constant, fields and particles, what mass means in a field, the Higgs field, where the proton's mass comes from, the vacuum, matter and forces). Where the shape of the extra dimensions matters (origins of mass, compactification, strings, fields, scales and more), a box with a small living Calabi–Yau figure explains the connection and links to the related views. The panel is in Norwegian by default, with a button for English, and can be hidden. On narrow screens it opens from the **Explanation** tab on the left edge.
 4. Under the picture, **What happens here** gives a fuller explanation and says whether the view is calculated or only illustrated.
-5. The clock under the picture shows simulation time. Use pause, reset and the speed slider to control it. In 3D views, drag to rotate and scroll or pinch to zoom. Views open zoomed a little out. Nothing rotates by itself by default: every 3D view has an **Automatic rotation** switch at the top of its parameters, and the ⟳ button above the picture is the same switch for the camera. In the Dimension Explorer, choosing a rotation plane starts the cube turning in that plane, and the angle slider moves with it.
+5. Time runs in every model. The clock under the picture shows model time and how long what you see would take in reality (for example attoseconds for an electron, nanoseconds for a field mode, or a logarithmic clock from the Planck time to the age of the universe). Under **Right now** the explanation panel says what time does in that model. Flat views that used to be still graphs now have a small live picture above the graph. Use pause, reset and the speed slider to control it. In 3D views, drag to rotate and scroll or pinch to zoom. Views open zoomed a little out. Nothing rotates by itself by default: every 3D view has an **Automatic rotation** switch at the top of its parameters, and the ⟳ button above the picture is the same switch for the camera. In the Dimension Explorer, choosing a rotation plane starts the cube turning in that plane, and the angle slider moves with it.
 6. On a phone the list of views folds away after you pick one, and a **Parameters** tab on the right edge opens the parameters.
+7. **◎ Learning center** (top right, and at the top of the list of views) explains how the models connect. It has four parts: a **map** of all the views with the links between them and an eight-step story that ties them together; **time and the constants of nature** (time as the constant we cannot get away from, and Planck's constant, the speed of light, the gravitational constant, Boltzmann's constant and the elementary charge: why each is there, how it was discovered and how we know it is there); **all the models**, each with an explanatory animation and the same three questions; and a **timeline** from 1636 to 2019 that separates what was measured from theory and hypothesis. Every model has an **Open in the lab** button, and the explanation panel has a **History and evidence** section for the view you are in. Add `#learn` to the address to open the lab straight into the learning center.
 
 ## What is in it
+
+The tables below follow the same fields of physics as the list of views in the lab.
 
 ### String theory and extra dimensions
 

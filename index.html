@@ -107,6 +107,27 @@ button.wide{display:block;width:100%;margin-top:8px}
 .xp-time{display:block;margin:8px 0 2px;padding:7px 9px;border-left:2px solid #efb77e;background:#efb77e10;border-radius:0 6px 6px 0;font-size:12.5px;line-height:1.5}
 .xp-time b{color:#efb77e;font-weight:600}
 
+/* v12 Schrödinger simulation (Claude, 21.11.2026) */
+#schPanel{display:none;border:1px solid var(--line);border-top:0;background:#08111a;padding:8px 10px 6px}
+body.sch-on #schPanel{display:block}
+.sch-bar{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin-bottom:6px}
+.sch-group{display:flex;flex-wrap:wrap;gap:3px;align-items:center}
+.sch-group>span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6f8aa0;margin-right:4px}
+.sch-group button{padding:4px 8px;font-size:10.5px;border-radius:5px}
+.sch-group button.active{background:#123044;border-color:var(--cyan);color:var(--cyan)}
+.sch-checks{gap:12px}.sch-checks .check{margin:0;font-size:10.5px}
+.sch-read{display:flex;flex-wrap:wrap;align-items:center;gap:3px 10px;font-size:10px;color:#8ca7bd;margin:2px 0 6px}
+.sch-read b{color:#c3d8e6;font-weight:500}.sch-read small{color:#5f7a90;font-size:9.5px}
+.sch-wheel{flex:none;width:18px;height:18px;border-radius:50%;-webkit-mask:radial-gradient(circle,transparent 4px,#000 5px);mask:radial-gradient(circle,transparent 4px,#000 5px);margin:0}
+.sch-honest{flex-basis:100%;color:#7f9bb0;font-style:italic;font-size:9.5px}
+body.sch-on .annotation{max-width:44%}
+@media(min-width:801px){body.sch-on .viewport{height:calc(100vh - 610px);min-height:340px}}
+@media(max-width:800px){body.sch-on .annotation{max-width:70%;right:auto}}
+#schPlots{display:block;width:100%;height:215px;cursor:crosshair;touch-action:pan-y}
+.sch-hint{font-size:9.5px;color:#5f7a90;margin:3px 0 0}
+@media(max-width:1100px){.sch-bar{gap:6px 10px}}
+@media(max-width:700px){#schPanel{padding:8px 8px 6px}.sch-group button{padding:5px 7px;font-size:10px}#schPlots{height:540px}.sch-group>span{width:100%;margin:2px 0 0}}
+
 /* v11 learning center (Claude, 16.11.2026) */
 body.lc-open{overflow:hidden}
 .lc{position:fixed;inset:0;z-index:200;background:#060c12;color:#c3d2df;display:flex;flex-direction:column;font:13px/1.6 system-ui,-apple-system,sans-serif}
@@ -190,7 +211,7 @@ nav button.learn-entry b{color:#efb77e}
   .lc-body{padding:14px 14px 70px}.lc-cards,.lc-consts{grid-template-columns:1fr}.lc-story ol{grid-template-columns:1fr}.lc-time-grid{grid-template-columns:1fr}
   .lc-tools button{padding:5px 8px;font-size:10.5px}.lc-fig.wide .lc-anim{height:225px}.lc-timeline li{grid-template-columns:44px 12px minmax(0,1fr);gap:8px}}
 @media(max-width:560px){.learn-btn .lc-long{display:none}.learn-btn .lc-short{display:inline}}
-</style></head><body><header><a class="brand" href="./"><span>◈</span><div>Physics lab<small>QUANTUM MECHANICS, FIELDS AND STRING THEORY · INTERACTIVE</small></div></a><div class="status"><i></i> LOCAL SIMULATION <span>v11</span></div><div class="header-actions"><button id="startTour">▶ Guided tour</button><button id="help">? Guide</button></div></header><main><aside class="left"><p class="eyebrow">LABORATORY</p><nav id="modules" aria-label="Experiments"><button data-module="dimension" class="active"><b>⬡</b><span>Dimension Explorer<small>Points, cubes & higher dimensions</small></span></button><button data-module="geometry"><b>✧</b><span>Calabi–Yau Geometry<small>Fermat quintic · folded surface</small></span></button><button data-module="string"><b>∿</b><span>String Vibration Lab<small>Standing waves & harmonics</small></span></button><button data-module="ring"><b>◎</b><span>Classical Closed Ring<small>Loop waves &amp; worldsheet</small></span></button><button data-module="compact"><b>◎</b><span>Compactification<small>A hidden dimension on a circle</small></span></button></nav><details class="physics-navigation" open><summary>Quantum physics, atoms and fields</summary><nav id="physicsModules" aria-label="Physics experiments"><p class="nav-group">Quantum mechanics</p><button data-module="superposition"><b>ψ</b><span>Quantum superposition</span></button><button data-module="packet"><b>ψ</b><span>Wave packets</span></button><button data-module="measurement"><b>⌖</b><span>Measurement and collapse</span></button><button data-module="interference"><b>ψ</b><span>Two-path interference</span></button><button data-module="tunneling"><b>ψ</b><span>Quantum tunneling</span></button><button data-module="rabi"><b>ψ</b><span>Two-level dynamics</span></button><p class="nav-group">Atoms and matter</p><button data-module="atoms"><b>⚛</b><span>Hydrogen orbitals and spectrum</span></button><button data-module="electron"><b>▤</b><span>Crystal energy bands</span></button><p class="nav-group">Oscillators and fields</p><button data-module="oscillator"><b>∿</b><span>Nonlinear oscillations</span></button><button data-module="coupled"><b>∿</b><span>Coupled modes</span></button><button data-module="fields"><b>ψ</b><span>Quantum field modes</span></button><button data-module="gap"><b>ω</b><span>Mass and dispersion</span></button><button data-module="vacuum"><b>ψ</b><span>Statistics and vacuum</span></button><button data-module="thermal"><b>ψ</b><span>Thermal occupation</span></button><button data-module="energy"><b>E</b><span>Energy and frequency</span></button><button data-module="mass"><b>m</b><span>Origins of mass</span></button><p class="nav-group">Big picture</p><button data-module="scales"><b>↔</b><span>Planck to universe</span></button><button data-module="status"><b>✓</b><span>Evidence and theory</span></button></nav></details><div class="left-section"><p class="eyebrow">QUICK PRESETS</p><div id="presets"></div></div><div class="left-section"><p class="eyebrow">EXPERIMENT NOTES</p><p class="note" id="moduleNote"></p></div><div class="left-bottom"><button id="reset">↺ Reset experiment</button><button id="export">↓ Save viewport PNG</button><p>Explore the mathematics.<br>Question the interpretation.</p></div></aside><section class="workspace"><div class="workspace-heading"><div><p class="eyebrow">EXPLORE / <span id="moduleLabel">DIMENSION EXPLORER</span></p><h1 id="title">4D — Tesseract</h1></div><span class="badge" id="badge">MATHEMATICAL RESULT</span></div><section id="tourCard" class="tour-card" aria-label="Guided tour" hidden></section><div class="viewport"><canvas id="scene" aria-label="Interactive 3D model. Drag to rotate and scroll to zoom." tabindex="0"></canvas><div class="annotation"><span>WHAT IS DISPLAYED</span><p id="description"></p></div><div class="view-tools"><button id="grid" class="on" aria-pressed="true" title="Toggle grid">▦</button><button id="axes" class="on" aria-pressed="true" title="Toggle coordinate axes">⌁</button><button id="orbitCamera" aria-pressed="false" title="Toggle automatic 3D camera rotation">⟳</button><button id="home" title="Reset camera">⌂</button></div><div class="axis-key"><span>X</span><span>Y</span><span>Z</span></div><div class="view-hint">drag to rotate · scroll to zoom · double-click to reset</div><span class="view-label">3D PROJECTION / <span id="projectionLabel">PERSPECTIVE</span></span></div><div class="transport"><button id="play" aria-pressed="true">Ⅱ</button><button id="restart" title="Restart time">↺</button><span id="clock">t = 0.00 s</span><div class="timeline"><i></i></div><label for="speed">Speed</label><input id="speed" type="range" min="0" max="2" step="0.1" value="0.5"><output id="speedOut">0.5×</output></div><section class="reading-key" aria-label="Model legend"><div class="reading-head"><h2>What am I looking at?</h2><button id="toggleLegend" aria-expanded="true" aria-controls="legendBody">Hide legend −</button></div><div id="legendBody"></div></section><div id="physicsContextMount"></div></section><aside class="right" id="inspectorDock" aria-label="Inspector and model parameters"><div class="dock-close"><button id="closeInspector">Close right panel ×</button></div><div class="panel-heading"><p class="eyebrow">MODEL PARAMETERS</p><h2 id="controlTitle">Dimension Explorer</h2></div><div id="controls"></div><div class="inspector"><div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="math" class="active">∑ Mathematical inspector</button><button role="tab" aria-selected="false" data-tab="graphs">⌁ Graphs</button><button role="tab" aria-selected="false" data-tab="diagnostics">◉ Diagnostics</button></div><div id="inspectorContent"></div></div><div class="right-foot"><i></i> Calculated in your browser<span id="fps">— fps</span></div></aside></main><div class="inspector-rail" aria-label="Open right panel"><button data-open-inspector="math" aria-controls="inspectorDock" aria-expanded="false" aria-label="Open mathematics in right panel" title="Mathematics">Σ</button><button data-open-inspector="graphs" aria-controls="inspectorDock" aria-expanded="false" aria-label="Open graphs in right panel" title="Graphs">⌁</button><button data-open-inspector="diagnostics" aria-controls="inspectorDock" aria-expanded="false" aria-label="Open diagnostics in right panel" title="Diagnostics">◉</button></div><button id="inspectorBackdrop" class="inspector-backdrop" aria-label="Close right panel"></button><footer><span><i></i> ENGINE READY</span><span>Real mathematics · Educational analogies · Open questions</span><a href="https://home.cern/science/physics/extra-dimensions-gravitons-and-tiny-black-holes" target="_blank" rel="noopener">Learn more at CERN ↗</a></footer><dialog id="guide"><button id="closeGuide" aria-label="Close guide">×</button><p class="eyebrow">WELCOME TO THE LAB</p><h2>See what the equations of physics do.</h2><p>Select an experiment on the left and change it with the parameters on the right. Read “What happens here” under the picture for a plain explanation. In 3D views, drag to rotate and scroll or pinch to zoom; flat 2D views do not rotate. On a keyboard, arrow keys rotate and + / − zoom the focused viewport.</p><p><b>Dimension Explorer</b> projects exact n-cube vertices into 3D. <b>Calabi–Yau Geometry</b> shows a folded mesh section of the Fermat quintic threefold in ℂP⁴, with an optional sample across its six real dimensions. <b>String Vibration Lab</b> models classical waves. <b>Classical Closed Ring</b> compares supported periodic waves with a freely collapsing relativistic loop, and shows the worldsheet swept out in time. <b>Compactification</b> compares momentum and winding on a circle, including their exchange under T-duality. The Section explorer changes fixed coordinates of the quintic.</p><p>These models do not establish that string theory describes nature. Extra dimensions and fundamental strings remain unconfirmed experimentally.</p><h3>Physics experiments</h3><p>Eighteen physics experiments cover quantum mechanics (superposition, wave packets, measurement and collapse, interference, tunneling, two-level dynamics), atoms and matter (hydrogen orbitals and spectra, crystal bands), oscillators and quantum fields, and the big picture (scales and the status of the evidence). Five string-theory views show extra dimensions, Calabi–Yau geometry, vibrating strings, closed loops and compactification. Every view has a “What happens here” explanation under the picture; flat 2D views are used whenever the content is a graph and not a shape in space.</p><h3>Find your way around</h3><dl class="area-map"><dt>Experiments &amp; presets</dt><dd>Choose a model and a useful starting configuration.</dd><dt>Center viewport</dt><dd>Inspect the model. Its legend explains colors and axes.</dd><dt>Model parameters</dt><dd>Change the equations or the display settings.</dd><dt>Right panel</dt><dd>Parameters come first, with mathematics, graphs, diagnostics and model details below them. On narrow screens, use Σ, ⌁ or ◉ at the right edge.</dd></dl><button id="startGuideTour">Start the complete guided tour →</button><button id="startGuide">Explore freely</button></dialog><script>'use strict';
+</style></head><body><header><a class="brand" href="./"><span>◈</span><div>Physics lab<small>QUANTUM MECHANICS, FIELDS AND STRING THEORY · INTERACTIVE</small></div></a><div class="status"><i></i> LOCAL SIMULATION <span>v12</span></div><div class="header-actions"><button id="startTour">▶ Guided tour</button><button id="help">? Guide</button></div></header><main><aside class="left"><p class="eyebrow">LABORATORY</p><nav id="modules" aria-label="Experiments"><button data-module="dimension" class="active"><b>⬡</b><span>Dimension Explorer<small>Points, cubes & higher dimensions</small></span></button><button data-module="geometry"><b>✧</b><span>Calabi–Yau Geometry<small>Fermat quintic · folded surface</small></span></button><button data-module="string"><b>∿</b><span>String Vibration Lab<small>Standing waves & harmonics</small></span></button><button data-module="ring"><b>◎</b><span>Classical Closed Ring<small>Loop waves &amp; worldsheet</small></span></button><button data-module="compact"><b>◎</b><span>Compactification<small>A hidden dimension on a circle</small></span></button></nav><details class="physics-navigation" open><summary>Quantum physics, atoms and fields</summary><nav id="physicsModules" aria-label="Physics experiments"><p class="nav-group">Quantum mechanics</p><button data-module="superposition"><b>ψ</b><span>Quantum superposition</span></button><button data-module="packet"><b>ψ</b><span>Wave packets</span></button><button data-module="measurement"><b>⌖</b><span>Measurement and collapse</span></button><button data-module="interference"><b>ψ</b><span>Two-path interference</span></button><button data-module="tunneling"><b>ψ</b><span>Quantum tunneling</span></button><button data-module="rabi"><b>ψ</b><span>Two-level dynamics</span></button><p class="nav-group">Atoms and matter</p><button data-module="atoms"><b>⚛</b><span>Hydrogen orbitals and spectrum</span></button><button data-module="electron"><b>▤</b><span>Crystal energy bands</span></button><p class="nav-group">Oscillators and fields</p><button data-module="oscillator"><b>∿</b><span>Nonlinear oscillations</span></button><button data-module="coupled"><b>∿</b><span>Coupled modes</span></button><button data-module="fields"><b>ψ</b><span>Quantum field modes</span></button><button data-module="gap"><b>ω</b><span>Mass and dispersion</span></button><button data-module="vacuum"><b>ψ</b><span>Statistics and vacuum</span></button><button data-module="thermal"><b>ψ</b><span>Thermal occupation</span></button><button data-module="energy"><b>E</b><span>Energy and frequency</span></button><button data-module="mass"><b>m</b><span>Origins of mass</span></button><p class="nav-group">Big picture</p><button data-module="scales"><b>↔</b><span>Planck to universe</span></button><button data-module="status"><b>✓</b><span>Evidence and theory</span></button></nav></details><div class="left-section"><p class="eyebrow">QUICK PRESETS</p><div id="presets"></div></div><div class="left-section"><p class="eyebrow">EXPERIMENT NOTES</p><p class="note" id="moduleNote"></p></div><div class="left-bottom"><button id="reset">↺ Reset experiment</button><button id="export">↓ Save viewport PNG</button><p>Explore the mathematics.<br>Question the interpretation.</p></div></aside><section class="workspace"><div class="workspace-heading"><div><p class="eyebrow">EXPLORE / <span id="moduleLabel">DIMENSION EXPLORER</span></p><h1 id="title">4D — Tesseract</h1></div><span class="badge" id="badge">MATHEMATICAL RESULT</span></div><section id="tourCard" class="tour-card" aria-label="Guided tour" hidden></section><div class="viewport"><canvas id="scene" aria-label="Interactive 3D model. Drag to rotate and scroll to zoom." tabindex="0"></canvas><div class="annotation"><span>WHAT IS DISPLAYED</span><p id="description"></p></div><div class="view-tools"><button id="grid" class="on" aria-pressed="true" title="Toggle grid">▦</button><button id="axes" class="on" aria-pressed="true" title="Toggle coordinate axes">⌁</button><button id="orbitCamera" aria-pressed="false" title="Toggle automatic 3D camera rotation">⟳</button><button id="home" title="Reset camera">⌂</button></div><div class="axis-key"><span>X</span><span>Y</span><span>Z</span></div><div class="view-hint">drag to rotate · scroll to zoom · double-click to reset</div><span class="view-label">3D PROJECTION / <span id="projectionLabel">PERSPECTIVE</span></span></div><div class="transport"><button id="play" aria-pressed="true">Ⅱ</button><button id="restart" title="Restart time">↺</button><span id="clock">t = 0.00 s</span><div class="timeline"><i></i></div><label for="speed">Speed</label><input id="speed" type="range" min="0" max="2" step="0.1" value="0.5"><output id="speedOut">0.5×</output></div><section class="reading-key" aria-label="Model legend"><div class="reading-head"><h2>What am I looking at?</h2><button id="toggleLegend" aria-expanded="true" aria-controls="legendBody">Hide legend −</button></div><div id="legendBody"></div></section><div id="physicsContextMount"></div></section><aside class="right" id="inspectorDock" aria-label="Inspector and model parameters"><div class="dock-close"><button id="closeInspector">Close right panel ×</button></div><div class="panel-heading"><p class="eyebrow">MODEL PARAMETERS</p><h2 id="controlTitle">Dimension Explorer</h2></div><div id="controls"></div><div class="inspector"><div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="math" class="active">∑ Mathematical inspector</button><button role="tab" aria-selected="false" data-tab="graphs">⌁ Graphs</button><button role="tab" aria-selected="false" data-tab="diagnostics">◉ Diagnostics</button></div><div id="inspectorContent"></div></div><div class="right-foot"><i></i> Calculated in your browser<span id="fps">— fps</span></div></aside></main><div class="inspector-rail" aria-label="Open right panel"><button data-open-inspector="math" aria-controls="inspectorDock" aria-expanded="false" aria-label="Open mathematics in right panel" title="Mathematics">Σ</button><button data-open-inspector="graphs" aria-controls="inspectorDock" aria-expanded="false" aria-label="Open graphs in right panel" title="Graphs">⌁</button><button data-open-inspector="diagnostics" aria-controls="inspectorDock" aria-expanded="false" aria-label="Open diagnostics in right panel" title="Diagnostics">◉</button></div><button id="inspectorBackdrop" class="inspector-backdrop" aria-label="Close right panel"></button><footer><span><i></i> ENGINE READY</span><span>Real mathematics · Educational analogies · Open questions</span><a href="https://home.cern/science/physics/extra-dimensions-gravitons-and-tiny-black-holes" target="_blank" rel="noopener">Learn more at CERN ↗</a></footer><dialog id="guide"><button id="closeGuide" aria-label="Close guide">×</button><p class="eyebrow">WELCOME TO THE LAB</p><h2>See what the equations of physics do.</h2><p>Select an experiment on the left and change it with the parameters on the right. Read “What happens here” under the picture for a plain explanation. In 3D views, drag to rotate and scroll or pinch to zoom; flat 2D views do not rotate. On a keyboard, arrow keys rotate and + / − zoom the focused viewport.</p><p><b>Dimension Explorer</b> projects exact n-cube vertices into 3D. <b>Calabi–Yau Geometry</b> shows a folded mesh section of the Fermat quintic threefold in ℂP⁴, with an optional sample across its six real dimensions. <b>String Vibration Lab</b> models classical waves. <b>Classical Closed Ring</b> compares supported periodic waves with a freely collapsing relativistic loop, and shows the worldsheet swept out in time. <b>Compactification</b> compares momentum and winding on a circle, including their exchange under T-duality. The Section explorer changes fixed coordinates of the quintic.</p><p>These models do not establish that string theory describes nature. Extra dimensions and fundamental strings remain unconfirmed experimentally.</p><h3>Physics experiments</h3><p>Eighteen physics experiments cover quantum mechanics (superposition, wave packets, measurement and collapse, interference, tunneling, two-level dynamics), atoms and matter (hydrogen orbitals and spectra, crystal bands), oscillators and quantum fields, and the big picture (scales and the status of the evidence). Five string-theory views show extra dimensions, Calabi–Yau geometry, vibrating strings, closed loops and compactification. Every view has a “What happens here” explanation under the picture; flat 2D views are used whenever the content is a graph and not a shape in space.</p><h3>Find your way around</h3><dl class="area-map"><dt>Experiments &amp; presets</dt><dd>Choose a model and a useful starting configuration.</dd><dt>Center viewport</dt><dd>Inspect the model. Its legend explains colors and axes.</dd><dt>Model parameters</dt><dd>Change the equations or the display settings.</dd><dt>Right panel</dt><dd>Parameters come first, with mathematics, graphs, diagnostics and model details below them. On narrow screens, use Σ, ⌁ or ◉ at the right edge.</dd></dl><button id="startGuideTour">Start the complete guided tour →</button><button id="startGuide">Explore freely</button></dialog><script>'use strict';
 const PHYSICS_AREAS={},PHYSICS_NOTES={};
 const PHYS={h:6.62607015e-34,c:299792458,eV:1.602176634e-19,electronEV:510998.95069,protonEV:938272089.43,vGeV:246.22};
 let oscillatorCache=null;
@@ -2323,6 +2344,7 @@ const FIELD_OF = {}; PHYS_FIELDS.forEach(f => f.mods.forEach(m => { FIELD_OF[m] 
     axesCheck: ['Viser koordinataksene.', 'Shows the coordinate axes.'],
     'data-preset': ['Et forhåndsvalg som setter alle parameterne til et lærerikt utgangspunkt.', 'A preset that sets all parameters to an instructive starting point.']
   };
+  window.xpMeanings = P; // v12: the Schrödinger simulation adds meanings for its own controls
   const meaning = key => { const m = S.module; const e = P[m + '.' + key] || P[key]; return e ? e[NO() ? 0 : 1] : ''; };
 
   // ------------------------------------------------------------------ "right now": a live description of what is happening
@@ -2333,7 +2355,9 @@ const FIELD_OF = {}; PHYS_FIELDS.forEach(f => f.mods.forEach(m => { FIELD_OF[m] 
     const add = (no, en) => lines.push(T(no, en));
     let rows = []; try { rows = isPhysicsArea(m) && LAB[m] ? LAB[m].metrics() : []; } catch (e) { rows = []; }
     const mv = label => { const r = rows.find(x => String(x[0]).startsWith(label)); return r ? sci(r[1]) : '—'; };
-    if (m === 'dimension') {
+    const ov = window.xpNowOverride ? window.xpNowOverride(m, lang) : null; // v12: live simulation text
+    if (ov) ov.forEach(l => lines.push(l));
+    else if (m === 'dimension') {
       const other = complementaryPlane(S.dim, S.plane), a = S.angle;
       add(`Du ser en ${S.dim}D-kube med ${2 ** S.dim} hjørner og ${S.dim * 2 ** Math.max(0, S.dim - 1)} kanter.`, `You see a ${S.dim}D cube with ${2 ** S.dim} corners and ${S.dim * 2 ** Math.max(0, S.dim - 1)} edges.`);
       if (S.dim >= 2 && S.auto) add(`Den dreier av seg selv i planet ${planeName(S.plane)}${S.doubleRotation && other ? ` og samtidig i ${planeName(other)}` : ''}. Vinkelen er nå ${Math.round(a)}°.`, `It is turning by itself in the ${planeName(S.plane)} plane${S.doubleRotation && other ? ` and at the same time in ${planeName(other)}` : ''}. The angle is now ${Math.round(a)}°.`);
@@ -2556,7 +2580,7 @@ const FIELD_OF = {}; PHYS_FIELDS.forEach(f => f.mods.forEach(m => { FIELD_OF[m] 
     return items.join('');
   }
   function render() {
-    const m = S.module, d = X[m] && X[m][lang], val = v => typeof v === 'function' ? v() : v;
+    const m = S.module, d = (window.xpOverride && window.xpOverride(m, lang)) || (X[m] && X[m][lang]), val = v => typeof v === 'function' ? v() : v;
     if (hidden && !drawerMode()) { panel.innerHTML = `<button id="xpShow" class="xp-show" title="${T('Vis forklaring', 'Show explanation')}">${T('Forklaring', 'Explanation')} ›</button>`; $('xpShow').onclick = () => setHidden(false); return; }
     panel.innerHTML = `<div class="xp-head"><p class="eyebrow">${T('FORKLARING', 'EXPLANATION')}</p><div class="xp-tools"><button data-xplang="no" class="${lang === 'no' ? 'active' : ''}">Norsk</button><button data-xplang="en" class="${lang === 'en' ? 'active' : ''}">English</button><button id="xpHide" title="${T('Skjul forklaringen', 'Hide the explanation')}" aria-label="${T('Skjul forklaringen', 'Hide the explanation')}">‹</button></div></div>
       <h2>${m === 'atoms' && typeof wholeAtom === 'function' && wholeAtom() ? T(`${hElement().name}: hele atomet`, `${hElement().name}: the whole atom`) : (titles && titles[m]) || m}</h2>
@@ -2624,6 +2648,714 @@ const FIELD_OF = {}; PHYS_FIELDS.forEach(f => f.mods.forEach(m => { FIELD_OF[m] 
   const baseRender = render; render = function () { baseRender(); railText(); };
   document.body.classList.add('explain-on'); document.body.classList.toggle('explain-hidden', hidden);
   render();
+})();
+
+</script><script>
+// Physics lab v12 (Claude, 21.11.2026): a live Schrödinger simulation with parameter sliders in four quantum views.
+// Ole: "Implementer vedlagt slider i fysikk modulene" (screenshots of a Schrödinger equation explorer). Built in our own design:
+// the time-dependent Schrödinger equation iħ ∂ψ/∂t = −ħ²/2m ∂²ψ/∂x² + V(x)ψ is solved step by step (Crank–Nicolson), ψ(x, t) is
+// drawn as a curve in the complex plane along x, three plots under the picture show |ψ|², Re/Im and the potential, and every
+// slider restarts the run from t = 0. Units: ħ = 1, energy E₀ = 1 eV, mass in electron masses, so the length unit is
+// ħ/√(mₑ·1 eV) = 0.276 nm and the time unit ħ/(1 eV) = 0.658 fs. The classic analytic graph is still one click away.
+(() => {
+  const Q = ['packet', 'superposition', 'tunneling', 'interference'];
+  const L0NM = 0.27604, T0FS = 0.6582119569, V_UNIT = 4.1938e5; // nm, fs and m/s per unit
+  const RATE = 4, DT = 0.02, MAXSTEPS = 60;
+  const DEF = {
+    packet: { mass: 1, x0: -15, sigma: 2, k: 2 },
+    superposition: { pot: 'harmonic', init: 'eigen', mass: 1, omega: 1, width: 8, depth: 6, dwidth: 5, ddepth: 2.5, levelA: 0, levelB: 1, mix: .5, phase: 0, x0: 2, sigma: .7, k: 0 },
+    tunneling: { mass: 1, V0: 2, a: 1, E: 1, sigma: 3 },
+    interference: { init: 'slits', mass: 1, d: 12, sigma: .6, sep: 30, sigmaC: 3, k: 2, amp: 1, phase: 0 }
+  };
+  const clone = o => JSON.parse(JSON.stringify(o));
+  const extra = () => ({ qView: { packet: 'sim', superposition: 'sim', tunneling: 'sim', interference: 'sim' }, qp: clone(DEF), qDisplay: 'combined', qHistory: false, qAutoH: false, qAbsorb: true });
+  const baseInitial = physicsInitial;
+  physicsInitial = function () { return { ...baseInitial(), ...extra() }; };
+  { const e = extra(); for (const k in e) if (S[k] === undefined) S[k] = e[k]; }
+
+  const isQ = m => Q.includes(m);
+  const simOn = (m = S.module) => isQ(m) && S.qView && S.qView[m] === 'sim';
+  window.schSimOn = simOn;
+  const PR = (m = S.module) => S.qp[m];
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const f = (v, d = 2) => Number.isFinite(v) ? (Math.abs(v) < .5 * 10 ** -d ? 0 : v).toFixed(d) : '—';
+  const nm = (v, d = 2) => `${f(v * L0NM, d)} nm`;
+  const pc = (v, d = 1) => `${f(100 * v, d)} %`;
+  const sciT = v => window.fmtSci ? fmtSci(v) : v.toPrecision(3);
+  const LNO = () => (window.xpLang ? window.xpLang() : 'no') === 'no';
+
+  // ---------------------------------------------------------------- physics of each experiment
+  function Tplane(E, V0, a, mass) { // exact transmission of a plane wave through a rectangular barrier (ħ = 1)
+    if (E <= 0) return 0;
+    if (Math.abs(E - V0) < 1e-9) E += 1e-9;
+    if (E < V0) { const kap = Math.sqrt(2 * mass * (V0 - E)), sh = Math.sinh(kap * a); return 1 / (1 + V0 * V0 * sh * sh / (4 * E * (V0 - E))); }
+    const q = Math.sqrt(2 * mass * (E - V0)), sn = Math.sin(q * a); return 1 / (1 + V0 * V0 * sn * sn / (4 * E * (E - V0)));
+  }
+  function Tpacket(p) { // T averaged over the packet's momentum distribution |φ(k)|² (Gaussian, σk = 1/(2σx))
+    const k0 = Math.sqrt(2 * p.mass * p.E), sk = 1 / (2 * p.sigma); let s = 0, wsum = 0;
+    for (let i = -60; i <= 60; i++) { const k = k0 + i / 15 * sk, w = Math.exp(-((i / 15) ** 2) / 2); if (k <= 0) continue; s += w * Tplane(k * k / (2 * p.mass), p.V0, p.a, p.mass); wsum += w; }
+    return wsum ? s / wsum : 0;
+  }
+  const POTNAME = { harmonic: 'Harmonic trap', box: 'Box (infinite well)', finite: 'Finite well', double: 'Double well' };
+  const POTNO = { harmonic: 'harmonisk felle', box: 'boks (uendelig dyp brønn)', finite: 'endelig brønn', double: 'dobbeltbrønn' };
+  function setup(m) { // grid, potential and absorbing layer
+    const p = PR(m);
+    const wells = m === 'superposition';
+    const half = wells ? 22 : 56, dx = wells ? .04 : .05, N = Math.round(2 * half / dx) + 1;
+    const x = new Float64Array(N), V = new Float64Array(N), W = new Float64Array(N);
+    for (let i = 0; i < N; i++) x[i] = -half + i * dx;
+    if (wells) {
+      const om = p.omega, b = p.dwidth / 2;
+      for (let i = 0; i < N; i++) {
+        const xi = x[i]; let v = 0;
+        if (p.pot === 'harmonic') v = .5 * p.mass * om * om * xi * xi;
+        else if (p.pot === 'box') v = Math.abs(xi) > p.width / 2 - 1e-9 ? 1e5 : 0;
+        else if (p.pot === 'finite') v = Math.abs(xi) > p.width / 2 ? p.depth : 0;
+        else v = p.ddepth * ((xi / b) ** 2 - 1) ** 2;
+        V[i] = Math.min(v, 1e5);
+      }
+    }
+    // the barrier covers each grid cell [x − Δx/2, x + Δx/2] in part or whole, so its width on the grid is exactly a
+    if (m === 'tunneling') for (let i = 0; i < N; i++) { const ov = Math.min(x[i] + dx / 2, p.a / 2) - Math.max(x[i] - dx / 2, -p.a / 2); if (ov > 0) V[i] = p.V0 * Math.min(1, ov / dx); }
+    const absorb = !wells && S.qAbsorb, x1 = 44, Lab = half - x1;
+    if (absorb) for (let i = 0; i < N; i++) { const u = (Math.abs(x[i]) - x1) / Lab; if (u > 0) W[i] = 3 * u * u; }
+    return { m, N, dx, half, x, V, W, absorb, x1 };
+  }
+
+  // Crank–Nicolson: (1 + i dt/2 H) ψⁿ⁺¹ = (1 − i dt/2 H) ψⁿ, H = −1/(2m) d²/dx² + V − iW (three-point Laplacian, ψ = 0 at the ends).
+  // The tridiagonal left side is factorised once (Thomas algorithm); each step is then two sweeps over the grid.
+  function makeStepper(g, mass) {
+    const { N, V, W, dx } = g, s = 1 / (2 * mass * dx * dx), al = DT / 2, oi = -al * s, ri = al * s;
+    const cr = new Float64Array(N), ci = new Float64Array(N), gr = new Float64Array(N), gi = new Float64Array(N), br = new Float64Array(N), bi = new Float64Array(N);
+    let pcr = 0, pci = 0;
+    for (let i = 0; i < N; i++) {
+      const ar = 1 + al * W[i], ai = al * (2 * s + V[i]);
+      br[i] = 1 - al * W[i]; bi[i] = -al * (2 * s + V[i]);
+      const dr = ar + oi * pci, di = ai - oi * pcr, q = dr * dr + di * di, ir = dr / q, ii = -di / q;
+      gr[i] = ir; gi[i] = ii; pcr = -oi * ii; pci = oi * ir; cr[i] = pcr; ci[i] = pci;
+    }
+    const tr = new Float64Array(N), ti = new Float64Array(N);
+    return function step(re, im) {
+      let pdr = 0, pdi = 0;
+      for (let i = 0; i < N; i++) {
+        const sr = (i > 0 ? re[i - 1] : 0) + (i < N - 1 ? re[i + 1] : 0), si = (i > 0 ? im[i - 1] : 0) + (i < N - 1 ? im[i + 1] : 0);
+        const rr = br[i] * re[i] - bi[i] * im[i] - ri * si + oi * pdi, rI = br[i] * im[i] + bi[i] * re[i] + ri * sr - oi * pdr;
+        pdr = rr * gr[i] - rI * gi[i]; pdi = rr * gi[i] + rI * gr[i]; tr[i] = pdr; ti[i] = pdi;
+      }
+      re[N - 1] = tr[N - 1]; im[N - 1] = ti[N - 1];
+      for (let i = N - 2; i >= 0; i--) { const xr = re[i + 1], xi = im[i + 1]; re[i] = tr[i] - (cr[i] * xr - ci[i] * xi); im[i] = ti[i] - (cr[i] * xi + ci[i] * xr); }
+    };
+  }
+  // Lowest eigenstates of the same discrete H (real, symmetric, tridiagonal): Sturm bisection + inverse iteration.
+  function eigen(g, mass, K) {
+    const { N, V, dx } = g, s = 1 / (2 * mass * dx * dx), e2 = s * s;
+    let lo = Infinity, hi = -Infinity; for (let i = 0; i < N; i++) { lo = Math.min(lo, V[i]); hi = Math.max(hi, V[i] + 4 * s); }
+    const count = lam => { let n = 0, q = 1; for (let i = 0; i < N; i++) { q = 2 * s + V[i] - lam - (i ? e2 / q : 0); if (q === 0) q = 1e-300; if (q < 0) n++; } return n; };
+    const E = [], vecs = [];
+    for (let k = 0; k < K; k++) {
+      let a = lo, b = hi; for (let it = 0; it < 90; it++) { const c = (a + b) / 2; if (count(c) > k) b = c; else a = c; if (b - a < 1e-13 * (1 + Math.abs(c))) break; }
+      E.push((a + b) / 2);
+    }
+    const dd = new Float64Array(N), cp = new Float64Array(N);
+    for (let k = 0; k < K; k++) {
+      const lam = E[k] + 1e-11 * (1 + Math.abs(E[k]));
+      let v = new Float64Array(N); for (let i = 0; i < N; i++) v[i] = 1 + .5 * Math.sin(1.7 * i + .3 + k);
+      for (let it = 0; it < 4; it++) {
+        for (let i = 0; i < N; i++) { const di = 2 * s + V[i] - lam - (i ? (-s) * cp[i - 1] : 0); const piv = Math.abs(di) < 1e-300 ? 1e-300 : di; cp[i] = -s / piv; dd[i] = (v[i] - (i ? (-s) * dd[i - 1] : 0)) / piv; }
+        const u = new Float64Array(N); u[N - 1] = dd[N - 1]; for (let i = N - 2; i >= 0; i--) u[i] = dd[i] - cp[i] * u[i + 1];
+        for (const w of vecs) { let o = 0; for (let i = 0; i < N; i++) o += w[i] * u[i]; o *= dx; for (let i = 0; i < N; i++) u[i] -= o * w[i]; }
+        let n = 0; for (let i = 0; i < N; i++) n += u[i] * u[i]; n = Math.sqrt(n * dx); for (let i = 0; i < N; i++) u[i] /= n; v = u;
+      }
+      let mx = 0; for (let i = 0; i < N; i++) mx = Math.max(mx, Math.abs(v[i]));
+      for (let i = 0; i < N; i++) if (Math.abs(v[i]) > .15 * mx) { if (v[i] < 0) for (let j = 0; j < N; j++) v[j] = -v[j]; break; }
+      vecs.push(v);
+    }
+    return { E, vecs };
+  }
+  function gauss(g, x0, sig, k, re, im, amp = 1, ph = 0) {
+    const { N, x } = g;
+    for (let i = 0; i < N; i++) { const u = x[i] - x0, e = Math.exp(-u * u / (4 * sig * sig)), a = k * x[i] + ph; re[i] += amp * e * Math.cos(a); im[i] += amp * e * Math.sin(a); }
+  }
+  const norm2 = (g, re, im) => { let n = 0; for (let i = 0; i < g.N; i++) n += re[i] * re[i] + im[i] * im[i]; return n * g.dx; };
+  const scaleArr = (a, s) => { for (let i = 0; i < a.length; i++) a[i] *= s; };
+
+  // ---------------------------------------------------------------- the running simulation
+  let SIM = null;
+  const sig = m => JSON.stringify([m, PR(m), m === 'superposition' ? 0 : S.qAbsorb]);
+  function build(m) {
+    const p = PR(m), g = setup(m), N = g.N;
+    const st = { m, key: sig(m), g, p, ts: 0, absL: 0, absR: 0, estL: 0, estR: 0, hist: [], lastHist: -1, notes: [] };
+    st.step = makeStepper(g, p.mass);
+    const comps = []; const add = () => { const c = { re: new Float64Array(N), im: new Float64Array(N) }; comps.push(c); return c; };
+    if (m === 'packet') { const c = add(); gauss(g, p.x0, p.sigma, p.k, c.re, c.im); }
+    else if (m === 'tunneling') { const c = add(); st.k0 = Math.sqrt(2 * p.mass * p.E); st.x0 = -(p.a / 2 + 3.5 * p.sigma + 3); gauss(g, st.x0, p.sigma, st.k0, c.re, c.im); }
+    else if (m === 'interference') {
+      const c1 = add(), c2 = add();
+      if (p.init === 'slits') { gauss(g, -p.d / 2, p.sigma, 0, c1.re, c1.im); gauss(g, p.d / 2, p.sigma, 0, c2.re, c2.im); }
+      else { gauss(g, -p.sep / 2, p.sigmaC, p.k, c1.re, c1.im); gauss(g, p.sep / 2, p.sigmaC, -p.k, c2.re, c2.im); }
+      const n1 = Math.sqrt(norm2(g, c1.re, c1.im)), n2 = Math.sqrt(norm2(g, c2.re, c2.im));
+      scaleArr(c1.re, 1 / n1); scaleArr(c1.im, 1 / n1);
+      const cs = Math.cos(p.phase) * p.amp / n2, sn = Math.sin(p.phase) * p.amp / n2;
+      for (let i = 0; i < N; i++) { const r = c2.re[i], q = c2.im[i]; c2.re[i] = r * cs - q * sn; c2.im[i] = r * sn + q * cs; }
+      let tot = 0; for (let i = 0; i < N; i++) { const r = c1.re[i] + c2.re[i], q = c1.im[i] + c2.im[i]; tot += r * r + q * q; } tot = Math.sqrt(tot * g.dx);
+      for (const c of [c1, c2]) { scaleArr(c.re, 1 / tot); scaleArr(c.im, 1 / tot); }
+    } else {
+      const K = Math.max(8, Math.max(p.levelA, p.levelB) + 2); st.eig = eigen(g, p.mass, K);
+      if (p.pot === 'finite') st.nBound = st.eig.E.filter(e => e < p.depth).length;
+      const c = add();
+      if (p.init === 'eigen') {
+        const A = st.eig.vecs[p.levelA], B = st.eig.vecs[p.levelB];
+        if (p.levelA === p.levelB) for (let i = 0; i < N; i++) c.re[i] = A[i];
+        else { const a = Math.sqrt(1 - p.mix), b = Math.sqrt(p.mix); for (let i = 0; i < N; i++) { c.re[i] = a * A[i] + b * B[i] * Math.cos(p.phase); c.im[i] = b * B[i] * Math.sin(p.phase); } }
+      } else {
+        let x0 = p.x0; const lim = p.pot === 'box' || p.pot === 'finite' ? Math.max(0, p.width / 2 - 1.5 * p.sigma) : 99;
+        if (Math.abs(x0) > lim) { x0 = Math.sign(x0) * lim; st.notes.push('x0'); }
+        st.x0 = x0; gauss(g, x0, p.sigma, p.k, c.re, c.im);
+      }
+    }
+    if (comps.length === 1) { const n = Math.sqrt(norm2(g, comps[0].re, comps[0].im)); scaleArr(comps[0].re, 1 / n); scaleArr(comps[0].im, 1 / n); }
+    st.comps = comps; st.re = new Float64Array(N); st.im = new Float64Array(N); combine(st);
+    st.view = viewWindow(st); st.amp0 = maxAmp(st); st.ampNow = st.amp0;
+    st.E0 = stats(st).E; st.dens0 = 0;
+    for (let i = 0; i < N; i++) st.dens0 = Math.max(st.dens0, st.re[i] * st.re[i] + st.im[i] * st.im[i]);
+    return st;
+  }
+  function combine(st) {
+    const { re, im, comps } = st, N = re.length;
+    if (comps.length === 1) { re.set(comps[0].re); im.set(comps[0].im); return; }
+    const a = comps[0], b = comps[1]; for (let i = 0; i < N; i++) { re[i] = a.re[i] + b.re[i]; im[i] = a.im[i] + b.im[i]; }
+  }
+  function viewWindow(st) {
+    const { m, p, g } = st;
+    if (m === 'tunneling') { const r = p.a / 2 + 6.5 * p.sigma + 9; return [-r, r]; }
+    if (m === 'interference' && p.init === 'collide') { const r = p.sep / 2 + 3 * p.sigmaC + 5; return [-r, r]; }
+    if (m !== 'superposition') return [-30, 30];
+    if (p.pot === 'box') return [-(p.width / 2 + 1.5), p.width / 2 + 1.5];
+    const E = st.eig.E, top = Math.max(stats(st).E, E[Math.max(p.init === 'eigen' ? Math.max(p.levelA, p.levelB) : 0, 2)]);
+    if (p.pot === 'finite') return [-(p.width / 2 + 5), p.width / 2 + 5];
+    const cut = top * 1.5 + .3; let xm = 3;
+    for (let i = 0; i < g.N; i++) if (g.V[i] < cut) xm = Math.max(xm, Math.abs(g.x[i]));
+    xm = Math.min(21, xm * 1.08 + 1); return [-xm, xm];
+  }
+  function maxAmp(st) { const [a, b] = st.view, g = st.g; let mx = 1e-9; for (let i = 0; i < g.N; i++) { const x = g.x[i]; if (x < a || x > b) continue; mx = Math.max(mx, Math.hypot(st.re[i], st.im[i])); } return mx; }
+  function advance(st, n) {
+    const { g, comps } = st, W = g.W;
+    for (let s = 0; s < n; s++) {
+      for (const c of comps) st.step(c.re, c.im);
+      st.ts += DT;
+      if (g.absorb) { let l = 0, r = 0; const { re, im } = comps.length === 1 ? comps[0] : (combine(st), st); for (let i = 0; i < g.N; i++) { if (!W[i]) continue; const d = W[i] * (re[i] * re[i] + im[i] * im[i]); if (g.x[i] < 0) l += d; else r += d; } st.estL += 2 * DT * l * g.dx; st.estR += 2 * DT * r * g.dx; }
+    }
+    combine(st);
+  }
+  function current() {
+    const m = S.module; if (!simOn(m)) return null;
+    const target = time * RATE;
+    if (!SIM || SIM.m !== m || SIM.key !== sig(m) || target < SIM.ts - 1e-6) SIM = build(m);
+    let need = Math.floor((target - SIM.ts) / DT + 1e-9);
+    if (need > 0) {
+      const n = Math.min(need, MAXSTEPS); advance(SIM, n); need -= n;
+      if (need > 0) time = SIM.ts / RATE; // the computer could not keep up: the clock waits for the solver
+      const sh = 1.2; if (SIM.ts - SIM.lastHist >= sh || SIM.lastHist < 0) { SIM.lastHist = SIM.ts; snapshot(SIM); }
+      if (SIM.g.absorb && SIM.ts > 10) { const n2 = norm2(SIM.g, SIM.re, SIM.im); if (n2 < .004) { time = 0; } }
+    } else if (SIM.lastHist < 0) { SIM.lastHist = 0; snapshot(SIM); }
+    return SIM;
+  }
+  function snapshot(st) {
+    const [a, b] = st.view, n = 200, row = new Float32Array(n), g = st.g;
+    for (let j = 0; j < n; j++) { const x = a + (b - a) * j / (n - 1), i = clamp(Math.round((x + g.half) / g.dx), 0, g.N - 1); row[j] = st.re[i] * st.re[i] + st.im[i] * st.im[i]; }
+    st.hist.unshift(row); if (st.hist.length > 34) st.hist.pop();
+  }
+  // expectation values on the grid, consistent with the discrete H
+  function stats(st) {
+    const { g, re, im } = st, { N, dx, V, x } = g, mass = st.p.mass;
+    let n = 0, sx = 0, sxx = 0, sk = 0, skk = 0, sv = 0;
+    for (let i = 0; i < N; i++) {
+      const d = re[i] * re[i] + im[i] * im[i]; n += d; sx += d * x[i]; sxx += d * x[i] * x[i]; sv += d * V[i];
+      if (i < N - 1) { const dr = re[i + 1] - re[i], di = im[i + 1] - im[i]; skk += (dr * dr + di * di) / (dx * dx); }
+      if (i > 0 && i < N - 1) sk += (re[i] * (im[i + 1] - im[i - 1]) - im[i] * (re[i + 1] - re[i - 1])) / (2 * dx);
+    }
+    if (n <= 1e-12) return { norm: 0, x: 0, sx: 0, k: 0, sk: 0, E: 0 };
+    const mx = sx / n, mk = sk / n, ekin = skk / n / (2 * mass);
+    return { norm: n * dx, x: mx, sx: Math.sqrt(Math.max(0, sxx / n - mx * mx)), k: mk, sk: Math.sqrt(Math.max(0, skk / n - mk * mk)), E: ekin + sv / n };
+  }
+  function absorbed(st) {
+    const lost = Math.max(0, 1 - norm2(st.g, st.re, st.im)), e = st.estL + st.estR;
+    return e > 1e-12 ? { L: lost * st.estL / e, R: lost * st.estR / e } : { L: 0, R: 0 };
+  }
+  function sideProb(st) { // probability left and right of the barrier, including what the edges absorbed
+    const { g, re, im } = st, a = st.p.a / 2; let l = 0, r = 0, inside = 0;
+    for (let i = 0; i < g.N; i++) { const d = (re[i] * re[i] + im[i] * im[i]) * g.dx; if (g.x[i] < -a) l += d; else if (g.x[i] > a) r += d; else inside += d; }
+    const ab = absorbed(st); return { L: l + ab.L, R: r + ab.R, inside };
+  }
+  function tunnelDone(st) { const p = st.p, v = Math.sqrt(2 * p.mass * p.E) / p.mass, vs = Math.max(.15, v - 2 / (2 * p.sigma) / p.mass); return (Math.abs(st.x0) + p.a / 2 + 4 * p.sigma) / vs + 4; }
+  function populations(st) {
+    const { g, re, im } = st, out = [];
+    st.eig.vecs.forEach((v, n) => { let a = 0, b = 0; for (let i = 0; i < g.N; i++) { a += v[i] * re[i]; b += v[i] * im[i]; } out.push((a * a + b * b) * g.dx * g.dx); });
+    return out;
+  }
+  function fringe(st) {
+    const p = st.p, t = st.ts, m = p.mass;
+    if (p.init !== 'slits') return Math.PI / p.k;
+    if (t <= 0) return Infinity;
+    return Math.PI * (16 * p.sigma ** 4 + 4 * t * t / (m * m)) * m / (2 * t * p.d);
+  }
+
+  // ---------------------------------------------------------------- numbers for the panels
+  let metricCache = { t: -1, rows: [] };
+  function simMetrics() {
+    const st = SIM && SIM.m === S.module ? SIM : current(); if (!st) return [];
+    const s = stats(st), p = st.p, t = st.ts, rows = [['Simulation time t', `${f(t, 1)} ħ/E₀ = ${f(t * T0FS, 2)} fs`]];
+    const unc = s.sx * s.sk;
+    if (st.m === 'packet') {
+      rows.push(['⟨x⟩ (centre)', nm(s.x)], ['σx (width)', `${nm(s.sx)} (start ${nm(p.sigma)})`], ['⟨k⟩ = ⟨p⟩/ħ', `${f(s.k / L0NM, 2)} nm⁻¹`], ['σx·σp / ħ', `${f(unc, 3)} (never below 0.5)`], ['⟨E⟩', `${f(s.E, 3)} eV`], ['Group velocity ħk₀/m', `${sciT(Math.abs(p.k) / p.mass * V_UNIT)} m/s`], ['Norm ∫|ψ|² dx', `${f(s.norm, 6)}${st.g.absorb ? ` (+ ${f(1 - s.norm, 6)} absorbed at the edges)` : ''}`]);
+    } else if (st.m === 'tunneling') {
+      const sp = sideProb(st), Tp = Tplane(p.E, p.V0, p.a, p.mass), Ta = Tpacket(p);
+      const done = t > tunnelDone(st); rows.push([done ? 'Transmitted (right of barrier)' : 'Right of barrier now (collision under way)', pc(sp.R)], [done ? 'Reflected (left of barrier)' : 'Left of barrier now', pc(sp.L)], ['Inside the barrier now', pc(sp.inside, 2)], ['Formula: plane wave T(E)', pc(Tp)], ['Formula: T averaged over the packet', pc(Ta)], ['⟨E⟩ of the packet', `${f(s.E, 3)} eV (σE ≈ ${f(Math.sqrt(2 * p.E / p.mass) / (2 * p.sigma), 2)} eV)`], ['Barrier', `${f(p.V0, 2)} eV high, ${nm(p.a)} wide`]);
+    } else if (st.m === 'interference') {
+      const vis = 2 * p.amp / (1 + p.amp * p.amp), fr = fringe(st);
+      rows.push(['Relative phase φ', `${f(p.phase, 2)} rad`], [p.init === 'slits' ? 'Fringe spacing (Gaussian sources)' : 'Fringe spacing π/k₀', Number.isFinite(fr) ? nm(fr) : '∞ (no overlap yet)'], ['Visibility 2a/(1 + a²)', pc(vis, 0)], ['⟨x⟩', nm(s.x)], ['σx', nm(s.sx)], ['⟨E⟩', `${f(s.E, 3)} eV`], ['Norm ∫|ψ|² dx', f(s.norm, 6)]);
+    } else {
+      const E = st.eig.E, pop = populations(st), top = pop.map((v, n) => [n, v]).sort((a, b) => b[1] - a[1]).slice(0, 3).filter(x => x[1] > .005);
+      const dE = Math.abs(E[p.levelB] - E[p.levelA]);
+      rows.push(['Potential', p.pot === 'harmonic' ? `Harmonic, ħω = ${f(p.omega, 2)} eV` : p.pot === 'box' ? `Box, L = ${nm(p.width)}` : p.pot === 'finite' ? `Finite well, ${f(p.depth, 1)} eV deep, ${nm(p.width)} wide` : `Double well, barrier ${f(p.ddepth, 2)} eV`],
+        ['Levels E₀, E₁, E₂, E₃', E.slice(0, 4).map(e => f(e, 3)).join(', ') + ' eV'], ['Populations |cₙ|²', top.map(([n, v]) => `n=${n}: ${pc(v, 1)}`).join(', ')],
+        [p.init === 'eigen' ? `Beat period h/(E${p.levelB} − E${p.levelA})` : 'Lowest beat period h/(E₁ − E₀)', (() => { const d = p.init === 'eigen' ? dE : Math.abs(E[1] - E[0]); return d > 1e-12 && !(p.init === 'eigen' && p.levelA === p.levelB) ? `${sciT(2 * Math.PI / d * T0FS)} fs` : 'none: one level only, nothing moves'; })()],
+        ['⟨x⟩', nm(s.x)], ['⟨E⟩ (conserved)', `${f(s.E, 4)} eV`], ['Norm ∫|ψ|² dx', f(s.norm, 6)]);
+      if (p.pot === 'finite') rows.push(['Bound states (E < V₀)', String(st.nBound)]);
+    }
+    rows.push(['Method', `Crank–Nicolson, N = ${st.g.N}, Δx = ${f(st.g.dx * L0NM * 1000, 1)} pm, Δt = ${f(DT * T0FS * 1000, 1)} as`]);
+    return rows;
+  }
+  function metricsNow() { if (Math.abs(metricCache.t - time) > .15 || metricCache.m !== S.module || metricCache.key !== (SIM && SIM.key)) metricCache = { t: time, m: S.module, key: SIM && SIM.key, rows: simMetrics() }; return metricCache.rows; }
+  for (const m of Q) { const a = LAB[m], base = a.metrics; a.metrics = function () { return simOn(m) && S.module === m ? metricsNow() : base.apply(this, arguments); }; }
+
+  // ---------------------------------------------------------------- drawing: ψ(x) in the complex plane
+  const hueCache = new Map();
+  const col = (deg, a, l = 62) => { const k = (Math.round(deg / 5) * 5 % 360) * 1000 + Math.round(a * 50) * 10 + (l > 70 ? 1 : 0); let s = hueCache.get(k); if (!s) { s = `hsla(${Math.round(deg / 5) * 5 % 360},88%,${l}%,${(Math.round(a * 50) / 50).toFixed(2)})`; hueCache.set(k, s); } return s; };
+  const phaseDeg = (r, i) => (Math.atan2(i, r) * 180 / Math.PI + 360) % 360;
+  function samples(st, maxS) {
+    const [a, b] = st.view, g = st.g, i0 = clamp(Math.ceil((a + g.half) / g.dx), 0, g.N - 1), i1 = clamp(Math.floor((b + g.half) / g.dx), 0, g.N - 1);
+    const stride = Math.max(1, Math.ceil((i1 - i0 + 1) / maxS)), out = [];
+    for (let i = i0; i <= i1; i += stride) out.push(i);
+    return out;
+  }
+  let ampRef = 1;
+  function drawSim(c, w, h) {
+    const st = current(); if (!st) return;
+    const g = st.g, [va, vb] = st.view, phone = w < 560;
+    const amp = maxAmp(st); st.ampNow = amp;
+    if (!S.qAutoH) ampRef = st.amp0; else ampRef = ampRef > 0 && ampRef < 3 * amp && amp < 3 * ampRef ? ampRef + (amp - ampRef) * .15 : amp;
+    const HS = 1.05 / ampRef, XS = 6 / (vb - va), X = x => -3 + (x - va) * XS;
+    const P = (x, y, z) => { const q = scenePoint([x, y, z], w, h); q.y += h * .05; if (camKey === 'persp') q.x += w * .035; return q; };
+    const idx = samples(st, phone ? 360 : 640), re = st.re, im = st.im, FY = -1.05, ZB = 1.1;
+    const line = (pts, color, width = 1, dash) => { c.beginPath(); pts.forEach((q, j) => j ? c.lineTo(q.x, q.y) : c.moveTo(q.x, q.y)); c.strokeStyle = color; c.lineWidth = width; c.setLineDash(dash || []); c.stroke(); c.setLineDash([]); };
+    // floor grid
+    if (S.grid) {
+      for (const z of [-.95, 0, .95]) line([P(-3, FY, z), P(3, FY, z)], '#26394b66');
+      const stp = niceStep((vb - va) * L0NM / 8); for (let v = Math.ceil(va * L0NM / stp) * stp; v <= vb * L0NM + 1e-9; v += stp) line([P(X(v / L0NM), FY, -.95), P(X(v / L0NM), FY, .95)], '#26394b55');
+    }
+    // energy wall at the back: V(x), ⟨E⟩ and the levels, on an energy scale of its own
+    const E = energyScale(st), EY = v => FY + 1.7 * (clamp(v, E.lo, E.hi) - E.lo) / (E.hi - E.lo);
+    if (st.m === 'tunneling' || st.m === 'superposition') { const pts = []; for (const i of samples(st, 400)) pts.push(P(X(g.x[i]), EY(g.V[i]), ZB));
+      c.beginPath(); pts.forEach((q, j) => j ? c.lineTo(q.x, q.y) : c.moveTo(q.x, q.y)); const r0 = P(3, FY, ZB), l0 = P(-3, FY, ZB); c.lineTo(r0.x, r0.y); c.lineTo(l0.x, l0.y); c.closePath(); c.fillStyle = 'rgba(239,183,126,.05)'; c.fill();
+      line(pts, 'rgba(239,183,126,.75)', 1.4);
+      if (st.eig) st.eig.E.forEach((e, n) => { if (e > E.hi) return; const xs = []; for (const i of samples(st, 300)) if (g.V[i] <= e) xs.push(g.x[i]); if (!xs.length) return; line([P(X(xs[0]), EY(e), ZB), P(X(xs[xs.length - 1]), EY(e), ZB)], n === st.p.levelA || n === st.p.levelB ? 'rgba(179,160,237,.55)' : 'rgba(179,160,237,.22)', 1); });
+      const eNow = stats(st).E, el = [P(-3, EY(st.E0), ZB), P(3, EY(st.E0), ZB)]; line(el, 'rgba(255,240,220,.6)', 1, [5, 4]);
+      if (S.axes) { canvasText(c, 'V(x)', pts[0].x + 4, Math.min(pts[0].y, el[0].y) - 6, { size: 10, color: '#efb77e' }); canvasText(c, `⟨E⟩ = ${f(eNow, 2)} eV`, el[1].x - 4, el[1].y - 5, { size: 10, color: '#f3e3cf', align: 'right' }); }
+    }
+    // density history: |ψ|² of earlier moments, as lines on the floor going backwards in time
+    if (S.qHistory && st.hist.length) {
+      const dref = Math.max(...st.hist.map(r => Math.max(...r))) || 1;
+      st.hist.forEach((row, k) => { const z = -.95 + k * 1.9 / 34, pts = []; for (let j = 0; j < row.length; j++) pts.push(P(-3 + 6 * j / (row.length - 1), FY + .75 * row[j] / dref, z)); line(pts, `rgba(120,222,247,${(.75 * (1 - k / 36)).toFixed(2)})`, k ? .8 : 1.4); });
+    }
+    // the barrier: a translucent wall that ψ passes through
+    if (st.m === 'tunneling') {
+      const a = st.p.a / 2, H = 1.1, al = .06 + .14 * st.p.V0 / 5;
+      const face = xx => [P(X(xx), FY, -.95), P(X(xx), H, -.95), P(X(xx), H, .95), P(X(xx), FY, .95)];
+      for (const fc of [face(-a), face(a)]) { c.beginPath(); fc.forEach((q, j) => j ? c.lineTo(q.x, q.y) : c.moveTo(q.x, q.y)); c.closePath(); c.fillStyle = `rgba(239,150,90,${al.toFixed(2)})`; c.fill(); c.strokeStyle = 'rgba(239,183,126,.55)'; c.lineWidth = 1; c.stroke(); }
+      const top = [P(X(-a), H, -.95), P(X(a), H, -.95), P(X(a), H, .95), P(X(-a), H, .95)]; c.beginPath(); top.forEach((q, j) => j ? c.lineTo(q.x, q.y) : c.moveTo(q.x, q.y)); c.closePath(); c.fillStyle = `rgba(239,150,90,${(al * .8).toFixed(2)})`; c.fill();
+    }
+    // axes
+    if (S.axes) {
+      line([P(-3, 0, 0), P(3.1, 0, 0)], 'rgba(117,200,217,.55)', 1);
+      line([P(-3, -.9, 0), P(-3, .9, 0)], 'rgba(180,161,245,.6)', 1); line([P(-3, 0, -.9), P(-3, 0, .9)], 'rgba(132,183,158,.6)', 1);
+      const t1 = P(-3, .96, 0), t2 = P(-3, 0, -.98), t3 = P(3.15, 0, 0);
+      canvasText(c, 'Re ψ', t1.x, t1.y - 3, { size: 10, color: '#b4a1f5', align: 'center' }); canvasText(c, 'Im ψ', t2.x - 4, t2.y + 12, { size: 10, color: '#84b79e', align: 'center' }); canvasText(c, 'x', t3.x + 4, t3.y + 4, { size: 11, color: '#75c8d9' });
+      const stp = niceStep((vb - va) * L0NM / (phone ? 5 : 8));
+      for (let v = Math.ceil(va * L0NM / stp) * stp; v <= vb * L0NM + 1e-9; v += stp) { const q = P(X(v / L0NM), 0, 0), q2 = P(X(v / L0NM), -.05, 0); line([q, q2], 'rgba(117,200,217,.6)'); canvasText(c, `${+v.toFixed(2)}`, q2.x, q2.y + 11, { size: 9, color: '#5f8aa3', align: 'center' }); }
+      const ql = P(3, -.05, 0); canvasText(c, 'nm', ql.x + 14, ql.y + 11, { size: 9, color: '#5f8aa3' });
+    }
+    // ψ itself
+    const mode = S.qDisplay, pts = idx.map(i => { const r = re[i], q = im[i], a = Math.hypot(r, q) / ampRef; return { x: X(g.x[i]), r, q, a, d: a * a, h: phaseDeg(r, q) }; });
+    const quad = (A, B, C, D, fill) => { c.beginPath(); c.moveTo(A.x, A.y); c.lineTo(B.x, B.y); c.lineTo(C.x, C.y); c.lineTo(D.x, D.y); c.closePath(); c.fillStyle = fill; c.fill(); };
+    if (mode === 'combined' || mode === 'phase' || mode === 'density') {
+      let prevA = null, prevT = null;
+      for (let j = 0; j < pts.length; j++) {
+        const s = pts[j];
+        const A = P(s.x, 0, 0), T = mode === 'combined' ? P(s.x, s.r * HS, s.q * HS) : mode === 'phase' ? P(s.x, s.a * .85, 0) : P(s.x, s.d * 1.5, 0);
+        if (prevA && (s.a > .01 || pts[j - 1].a > .01)) quad(prevA, prevT, T, A, col(s.h, mode === 'combined' ? .05 + .5 * Math.min(1, s.d) : mode === 'phase' ? .25 + .7 * Math.min(1, s.a) : .55));
+        prevA = A; prevT = T;
+      }
+    }
+    if (mode === 'combined') {
+      // the tip of ψ: the corkscrew, coloured by phase
+      c.lineWidth = phone ? 1.3 : 1.6; let path = null, key = '';
+      for (let j = 1; j < pts.length; j++) {
+        const s0 = pts[j - 1], s1 = pts[j]; if (s0.a < .004 && s1.a < .004) { if (path) { c.stroke(); path = null; } continue; }
+        const k = col(s1.h, .3 + .7 * Math.min(1, s1.a), 70);
+        if (k !== key || !path) { if (path) c.stroke(); c.beginPath(); const p0 = P(s0.x, s0.r * HS, s0.q * HS); c.moveTo(p0.x, p0.y); c.strokeStyle = k; key = k; path = true; }
+        const p1 = P(s1.x, s1.r * HS, s1.q * HS); c.lineTo(p1.x, p1.y);
+      }
+      if (path) c.stroke();
+    } else if (mode === 're' || mode === 'im') {
+      const env = s => mode === 're' ? [P(s.x, s.a * .85, 0), P(s.x, -s.a * .85, 0)] : [P(s.x, 0, s.a * .85), P(s.x, 0, -s.a * .85)];
+      line(pts.map(s => env(s)[0]), 'rgba(255,255,255,.25)', 1, [2, 3]); line(pts.map(s => env(s)[1]), 'rgba(255,255,255,.25)', 1, [2, 3]);
+      line(pts.map(s => mode === 're' ? P(s.x, s.r * HS, 0) : P(s.x, 0, s.q * HS)), mode === 're' ? '#b4a1f5' : '#84b79e', 1.6);
+    } else if (mode === 'density') line(pts.map(s => P(s.x, s.d * 1.5, 0)), '#bfeefb', 1.4);
+    else if (mode === 'phase') line(pts.map(s => P(s.x, s.a * .85, 0)), 'rgba(255,255,255,.7)', 1.1);
+    if (st.m === 'interference' && mode === 'density') {
+      const [c1, c2] = st.comps; for (const [cc, dash] of [[c1, []], [c2, [4, 3]]]) line(idx.map(i => P(X(g.x[i]), (cc.re[i] ** 2 + cc.im[i] ** 2) / (ampRef * ampRef) * 1.5, 0)), 'rgba(179,160,237,.8)', 1, dash);
+    }
+  }
+  function niceStep(raw) { const e = 10 ** Math.floor(Math.log10(raw)), r = raw / e; return (r < 1.5 ? 1 : r < 3.5 ? 2 : r < 7.5 ? 5 : 10) * e; }
+  function energyScale(st) {
+    const p = st.p, E0 = st.E0;
+    if (st.m === 'tunneling') return { lo: 0, hi: Math.max(p.V0, E0) * 1.35 + .1 };
+    if (st.m !== 'superposition') return { lo: 0, hi: Math.max(1, E0 * 2.2) };
+    const lev = st.eig.E, k = p.init === 'eigen' ? Math.max(p.levelA, p.levelB) : 1;
+    let hi = Math.max(E0 * 1.6, lev[Math.min(lev.length - 1, k + 1)] * 1.12);
+    if (p.pot === 'finite') hi = Math.max(hi, p.depth * 1.15); if (p.pot === 'double') hi = Math.max(hi, p.ddepth * 1.5);
+    return { lo: Math.min(0, ...lev.slice(0, 1)) , hi };
+  }
+  const READ = {
+    combined: ['x → space · up = Re ψ · depth = Im ψ', 'ribbon opacity = |ψ|² · colour = phase arg ψ'],
+    density: ['height = |ψ|², the probability density', 'colour = phase arg ψ'],
+    re: ['height = Re ψ · dotted = ±|ψ|', 'choose the camera Front (x–Re) to see it flat'],
+    im: ['depth = Im ψ · dotted = ±|ψ|', 'choose the camera Top (x–Im) to see it flat'],
+    phase: ['height = |ψ| · colour = phase arg ψ', 'one full turn of colour = one wavelength']
+  };
+  // ---------------------------------------------------------------- three plots under the picture
+  const panel = document.createElement('section'); panel.id = 'schPanel'; panel.setAttribute('aria-label', 'Simulation display and plots');
+  const DISP = [['combined', 'Combined'], ['density', '|ψ|²'], ['re', 'Re ψ'], ['im', 'Im ψ'], ['phase', 'Phase']];
+  const CAMS = [['persp', 'Perspective'], ['front', 'Front (x–Re)'], ['top', 'Top (x–Im)'], ['end', 'End (Re–Im)']];
+  panel.innerHTML = `<div class="sch-bar"><div class="sch-group" role="group" aria-label="Display"><span>Display</span>${DISP.map(([k, t]) => `<button data-qdisp="${k}">${t}</button>`).join('')}</div><div class="sch-group" role="group" aria-label="Camera"><span>Camera</span>${CAMS.map(([k, t]) => `<button data-qcam="${k}">${t}</button>`).join('')}</div><div class="sch-group sch-checks"><label class="check"><input id="qHistory" type="checkbox">Density history surface</label><label class="check"><input id="qAutoH" type="checkbox">Auto-scale height</label></div></div><div class="sch-read"><i class="sch-wheel" aria-hidden="true"></i><span id="schRead"></span><span class="sch-honest">Mathematical picture of a one-dimensional quantum model. The particle is not located on the curve; ψ is not a wave in physical space.</span></div><canvas id="schPlots" aria-label="Plots of the probability density, the real and imaginary parts of ψ, and the potential with energy levels. Hover to read values."></canvas><p class="sch-hint">Hover or touch a plot to read the values at one place. Positions in nm, energies in eV, for an electron unless you change the mass.</p>`;
+  const tr = document.querySelector('.transport'); if (tr) tr.after(panel);
+  // the phase wheel: arg ψ = 0 to the right, growing counter-clockwise as in the complex plane (conic gradients run clockwise from the top)
+  panel.querySelector('.sch-wheel').style.background = `conic-gradient(${Array.from({ length: 13 }, (_, k) => `hsl(${((90 - k * 30) % 360 + 360) % 360},88%,62%) ${k * 30}deg`).join(',')})`;
+  let camKey = 'persp';
+  function setCam(k) {
+    camKey = k;
+    const r = $('scene').getBoundingClientRect(), w = r.width || 600, h = r.height || 400, fit = clamp(.39 * w / (3 * .23 * Math.max(120, Math.min(w, h))), .25, 3);
+    if (k === 'persp') { rx = -.42; ry = -.32; zoom = fit; } else if (k === 'front') { rx = 0; ry = 0; zoom = fit * 1.05; } else if (k === 'top') { rx = -Math.PI / 2 + .001; ry = 0; zoom = fit * 1.05; } else { rx = -.1; ry = Math.PI / 2 - .05; zoom = clamp(fit * .8, .25, 3); }
+    syncBar();
+  }
+  function syncBar() {
+    panel.querySelectorAll('[data-qdisp]').forEach(b => b.classList.toggle('active', b.dataset.qdisp === S.qDisplay));
+    panel.querySelectorAll('[data-qcam]').forEach(b => b.classList.toggle('active', b.dataset.qcam === camKey));
+    $('qHistory').checked = !!S.qHistory; $('qAutoH').checked = !!S.qAutoH;
+    const r = READ[S.qDisplay] || READ.combined; $('schRead').innerHTML = `<b>${r[0]}</b> · ${r[1]} <small>(arg ψ: 0 → π/2 → π → 3π/2 counter-clockwise on the wheel)</small>`;
+  }
+  panel.querySelectorAll('[data-qdisp]').forEach(b => b.onclick = () => { S.qDisplay = b.dataset.qdisp; syncBar(); updateInfo(); });
+  panel.querySelectorAll('[data-qcam]').forEach(b => b.onclick = () => setCam(b.dataset.qcam));
+  $('qHistory').onchange = e => { S.qHistory = e.target.checked; updateInfo(); };
+  $('qAutoH').onchange = e => { S.qAutoH = e.target.checked; updateInfo(); };
+  const plotCv = $('schPlots'); let hover = null;
+  const hoverAt = e => { const r = plotCv.getBoundingClientRect(); hover = { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  plotCv.addEventListener('pointermove', hoverAt); plotCv.addEventListener('pointerdown', hoverAt); plotCv.addEventListener('pointerleave', () => { hover = null; });
+  function plotLayout(w, h) {
+    const stack = w < 480, n = 3, gap = stack ? 0 : 14, pw = stack ? w : (w - 2 * gap) / 3, ph = stack ? h / 3 : h;
+    return Array.from({ length: n }, (_, k) => ({ x: stack ? 0 : k * (pw + gap), y: stack ? k * ph : 0, w: pw, h: ph }));
+  }
+  function drawPlots() {
+    const st = SIM; if (!st || !simOn()) return;
+    const { c, w, h } = sizeCanvas(plotCv); c.clearRect(0, 0, w, h);
+    const g = st.g, [va, vb] = st.view, boxes = plotLayout(w, h), idx = samples(st, Math.max(200, Math.round(boxes[0].w * 1.5)));
+    const xs = idx.map(i => g.x[i] * L0NM), A = va * L0NM, B = vb * L0NM;
+    let hx = null; // hovered x in nm
+    if (hover) for (const b of boxes) if (hover.x >= b.x + 44 && hover.x <= b.x + b.w - 8 && hover.y >= b.y && hover.y <= b.y + b.h) hx = A + (hover.x - b.x - 44) / (b.w - 52) * (B - A);
+    const hi = hx === null ? -1 : clamp(Math.round((hx / L0NM + g.half) / g.dx), 0, g.N - 1);
+    const dens = idx.map(i => (st.re[i] ** 2 + st.im[i] ** 2) / L0NM), rs = idx.map(i => st.re[i] / Math.sqrt(L0NM)), is = idx.map(i => st.im[i] / Math.sqrt(L0NM));
+    const dNow = Math.max(1e-9, ...dens), aNow = Math.max(1e-9, ...idx.map(i => Math.hypot(st.re[i], st.im[i]))) / Math.sqrt(L0NM);
+    st.dSeen = Math.max(st.dSeen || st.dens0 / L0NM, dNow); st.aSeen = Math.max(st.aSeen || st.amp0 / Math.sqrt(L0NM), aNow);
+    const dmax = (S.qAutoH ? dNow : st.dSeen) * 1.15, amax = (S.qAutoH ? aNow : st.aSeen) * 1.15;
+    const Es = energyScale(st);
+    const pframe = (b, title, y0, y1, ylab) => {
+      const L = b.x + 44, R = b.x + b.w - 8, T = b.y + 24, Bt = b.y + b.h - 26;
+      c.strokeStyle = '#30465b'; c.lineWidth = 1; c.strokeRect(L, T, R - L, Bt - T);
+      canvasText(c, title, b.x + 4, b.y + 12, { size: 10, color: '#a5d8e9', weight: '600' });
+      const X = v => L + (v - A) / (B - A) * (R - L), Y = v => Bt - (v - y0) / (y1 - y0) * (Bt - T);
+      const sx = niceStep((B - A) / (b.w < 320 ? 4 : 6)); for (let v = Math.ceil(A / sx) * sx; v <= B + 1e-9; v += sx) { c.beginPath(); c.moveTo(X(v), Bt); c.lineTo(X(v), Bt + 3); c.stroke(); canvasText(c, `${+v.toFixed(2)}`, X(v), Bt + 13, { size: 9, color: '#6f8aa0', align: 'center' }); }
+      canvasText(c, 'x (nm)', R, Bt + 23, { size: 9, color: '#6f8aa0', align: 'right' });
+      const sy = niceStep((y1 - y0) / 4); for (let v = Math.ceil(y0 / sy) * sy; v <= y1 + 1e-9; v += sy) { c.beginPath(); c.moveTo(L - 3, Y(v)); c.lineTo(L, Y(v)); c.stroke(); canvasText(c, `${+v.toFixed(3)}`, L - 5, Y(v) + 3, { size: 9, color: '#6f8aa0', align: 'right' }); }
+      c.save(); c.translate(b.x + 9, (T + Bt) / 2); c.rotate(-Math.PI / 2); canvasText(c, ylab, 0, 0, { size: 9, color: '#6f8aa0', align: 'center' }); c.restore();
+      return { X, Y, L, R, T, Bt };
+    };
+    const poly = (F, ys, color, width = 1.5, dash, clip = true) => { c.save(); if (clip) { c.beginPath(); c.rect(F.L, F.T, F.R - F.L, F.Bt - F.T); c.clip(); } c.beginPath(); ys.forEach((v, j) => { const X = F.X(xs[j]), Y = F.Y(v); j ? c.lineTo(X, Y) : c.moveTo(X, Y); }); c.strokeStyle = color; c.lineWidth = width; c.setLineDash(dash || []); c.stroke(); c.restore(); };
+    const legend = (F, items) => { let x = F.L + 6, y = F.T + 10; c.font = '9px system-ui'; for (const [t, color, dash] of items) { const tw = 24 + c.measureText(t).width; if (x + tw > F.R - 4 && x > F.L + 6) { x = F.L + 6; y += 12; } c.fillStyle = 'rgba(8,17,26,.75)'; c.fillRect(x - 2, y - 7, tw, 12); c.strokeStyle = color; c.lineWidth = 1.5; c.setLineDash(dash || []); c.beginPath(); c.moveTo(x, y); c.lineTo(x + 14, y); c.stroke(); c.setLineDash([]); canvasText(c, t, x + 17, y + 3, { size: 9, color: '#a4c4d9' }); c.font = '9px system-ui'; x += tw + 6; } };
+    const barrier = F => { if (st.m !== 'tunneling') return; const a = st.p.a / 2 * L0NM; c.fillStyle = 'rgba(239,150,90,.13)'; c.fillRect(F.X(-a), F.T, Math.max(1, F.X(a) - F.X(-a)), F.Bt - F.T); };
+    // 1: probability density
+    const F1 = pframe(boxes[0], 'PROBABILITY DENSITY', st.m === 'interference' ? -.5 * dmax : 0, dmax, '|ψ|² (1/nm)'); barrier(F1);
+    c.save(); c.beginPath(); c.rect(F1.L, F1.T, F1.R - F1.L, F1.Bt - F1.T); c.clip(); c.beginPath(); dens.forEach((v, j) => { const X = F1.X(xs[j]), Y = F1.Y(v); j ? c.lineTo(X, Y) : c.moveTo(X, Y); }); c.lineTo(F1.X(xs[xs.length - 1]), F1.Y(0)); c.lineTo(F1.X(xs[0]), F1.Y(0)); c.closePath(); c.fillStyle = 'rgba(120,222,247,.16)'; c.fill(); c.restore();
+    poly(F1, dens, '#78def7', 1.6);
+    if (st.m === 'interference') {
+      const [c1, c2] = st.comps, d1 = idx.map(i => (c1.re[i] ** 2 + c1.im[i] ** 2) / L0NM), d2 = idx.map(i => (c2.re[i] ** 2 + c2.im[i] ** 2) / L0NM), cr = idx.map(i => 2 * (c1.re[i] * c2.re[i] + c1.im[i] * c2.im[i]) / L0NM);
+      poly(F1, d1, '#b3a0ed', 1); poly(F1, d2, '#b3a0ed', 1, [4, 3]);
+      poly(F1, cr, 'rgba(239,183,126,.9)', 1, [2, 2]); c.strokeStyle = '#30465b'; c.beginPath(); c.moveTo(F1.L, F1.Y(0)); c.lineTo(F1.R, F1.Y(0)); c.stroke();
+      legend(F1, [['|ψ|²', '#78def7'], ['|ψ₁|²', '#b3a0ed'], ['|ψ₂|²', '#b3a0ed', [4, 3]], ['2Re ψ₁*ψ₂', '#efb77e', [2, 2]]]);
+    } else legend(F1, [['|ψ|²', '#78def7']]);
+    // 2: real and imaginary parts
+    const F2 = pframe(boxes[1], 'REAL AND IMAGINARY PARTS', -amax, amax, 'Re ψ, Im ψ (1/√nm)'); barrier(F2);
+    const ab = idx.map(i => Math.hypot(st.re[i], st.im[i]) / Math.sqrt(L0NM));
+    poly(F2, ab, 'rgba(255,255,255,.45)', 1, [1.5, 2.5]); poly(F2, ab.map(v => -v), 'rgba(255,255,255,.25)', 1, [1.5, 2.5]); poly(F2, rs, '#b4a1f5', 1.3); poly(F2, is, '#84b79e', 1.1, [4, 2]);
+    legend(F2, [['Re ψ', '#b4a1f5'], ['Im ψ', '#84b79e', [4, 2]], ['|ψ|', 'rgba(255,255,255,.6)', [1.5, 2.5]]]);
+    // 3: potential and energy levels
+    const F3 = pframe(boxes[2], 'POTENTIAL AND ENERGY', Es.lo, Es.hi, 'energy (eV)');
+    const vs = idx.map(i => g.V[i]); poly(F3, vs, '#efb77e', 1.6);
+    if (st.eig) st.eig.E.forEach((e, n) => { if (e > Es.hi) return; const on = st.p.init === 'eigen' && (n === st.p.levelA || n === st.p.levelB); const ys = idx.map(i => g.V[i] <= e ? e : NaN); c.save(); c.beginPath(); c.rect(F3.L, F3.T, F3.R - F3.L, F3.Bt - F3.T); c.clip(); c.beginPath(); let pen = false; ys.forEach((v, j) => { if (Number.isNaN(v)) { pen = false; return; } const X = F3.X(xs[j]), Y = F3.Y(v); pen ? c.lineTo(X, Y) : c.moveTo(X, Y); pen = true; }); c.strokeStyle = on ? 'rgba(179,160,237,.95)' : 'rgba(179,160,237,.4)'; c.lineWidth = on ? 1.4 : 1; c.setLineDash([4, 3]); c.stroke(); c.restore(); canvasText(c, `n=${n}`, F3.R - 3, F3.Y(e) - 2, { size: 8, color: '#8f7fc8', align: 'right' }); });
+    const eNow = stats(st).E; poly(F3, xs.map(() => eNow), '#f3e3cf', 1.2, [6, 3]);
+    if (st.m === 'tunneling') { const sE = Math.sqrt(2 * st.p.E / st.p.mass) / (2 * st.p.sigma); c.fillStyle = 'rgba(243,227,207,.08)'; c.fillRect(F3.L, F3.Y(Math.min(Es.hi, eNow + sE)), F3.R - F3.L, Math.max(0, F3.Y(Math.max(Es.lo, eNow - sE)) - F3.Y(Math.min(Es.hi, eNow + sE)))); }
+    legend(F3, [['V(x)', '#efb77e'], ['⟨E⟩', '#f3e3cf', [6, 3]], ...(st.eig ? [['levels Eₙ', '#b3a0ed', [4, 3]]] : st.m === 'tunneling' ? [['energy spread', 'rgba(243,227,207,.5)']] : [])]);
+    // hover readout
+    if (hi >= 0) {
+      const x = g.x[hi] * L0NM, d = (st.re[hi] ** 2 + st.im[hi] ** 2) / L0NM;
+      for (const F of [F1, F2, F3]) { c.strokeStyle = 'rgba(255,255,255,.35)'; c.lineWidth = 1; c.setLineDash([]); c.beginPath(); c.moveTo(F.X(x), F.T); c.lineTo(F.X(x), F.Bt); c.stroke(); }
+      const txt = [`x = ${f(x, 3)} nm`, `|ψ|² = ${f(d, 4)} /nm`, `Re ψ = ${f(st.re[hi] / Math.sqrt(L0NM), 3)}`, `Im ψ = ${f(st.im[hi] / Math.sqrt(L0NM), 3)}`, `phase = ${f(Math.atan2(st.im[hi], st.re[hi]), 2)} rad`, `V = ${f(g.V[hi], 3)} eV`];
+      const bx = boxes.find(b => hover.x >= b.x && hover.x <= b.x + b.w && hover.y >= b.y && hover.y <= b.y + b.h) || boxes[0];
+      const tw = 132, th = txt.length * 13 + 8, tx = clamp(hover.x + 12, bx.x + 46, bx.x + bx.w - tw - 10), ty = bx.y + 30;
+      c.fillStyle = 'rgba(8,17,26,.92)'; c.strokeStyle = '#3a5a72'; c.fillRect(tx, ty, tw, th); c.strokeRect(tx, ty, tw, th);
+      txt.forEach((t, k) => canvasText(c, t, tx + 7, ty + 15 + k * 13, { size: 10, color: k ? '#c3d2df' : '#bfeefb' }));
+    }
+  }
+
+  // ---------------------------------------------------------------- engine hooks
+  const base2D = is2DView;
+  is2DView = function () { return simOn() ? false : base2D(); };
+  const baseApply = applyViewMode;
+  applyViewMode = function () {
+    baseApply();
+    const on = simOn(); document.body.classList.toggle('sch-on', on);
+    if (!on) return;
+    const label = document.querySelector('.view-label'), hint = document.querySelector('.view-hint');
+    if (label && label.firstChild) label.firstChild.textContent = '3D VIEW / ';
+    $('projectionLabel').textContent = 'ψ(x) IN THE COMPLEX PLANE';
+    if (hint) hint.textContent = 'drag to rotate · scroll to zoom · double-click to reset';
+    const ak = document.querySelector('.axis-key'); if (ak) ak.innerHTML = '<span>x</span><span>Re ψ</span><span>Im ψ</span>';
+    syncBar();
+  };
+  const baseInfo = physicsInfo;
+  const DESC = {
+    packet: 'The Schrödinger equation solved live for a free particle: the packet moves and spreads.',
+    superposition: 'The Schrödinger equation solved live for a particle trapped in a well.',
+    tunneling: 'The Schrödinger equation solved live: a wave packet meets a barrier.',
+    interference: 'The Schrödinger equation solved live: two parts of one ψ overlap and interfere.'
+  };
+  physicsInfo = function () { const r = baseInfo(); if (!simOn()) return r; return { ...r, desc: DESC[S.module], badge: 'NUMERICAL SIMULATION' }; };
+  const baseLegend = areaLegend;
+  areaLegend = function () {
+    const a = baseLegend(); if (!simOn()) return a; const m = S.module;
+    a.items = [['cyan', 'ψ(x): up = Re ψ, depth = Im ψ; the colour of the ribbon and the curve is the phase arg ψ'], ['purple', m === 'superposition' ? 'Energy levels Eₙ (in the plot, and on the back wall of the picture)' : m === 'interference' ? '|ψ₁|² and |ψ₂|²: each path alone' : 'Re ψ and Im ψ in the plots'], ['orange', m === 'tunneling' ? 'The barrier V(x) and its height on the back wall' : 'The potential V(x) on the back wall and in the right plot'], ['muted', 'Dashed: ⟨E⟩, the mean energy, which stays constant']];
+    a.axes = 'x is position (nm). Re ψ and Im ψ are the two parts of a complex number, not directions in space. The back wall and the right plot use an energy axis in eV.';
+    a.meaning = 'What can be measured is |ψ|²: the chance of finding the particle at each place. The phase cannot be seen on its own, but differences in phase decide where waves add and cancel.';
+    a.try = TRY[m]; return a;
+  };
+  const TRY = {
+    packet: 'Make the packet narrow (σx = 0.5) and watch it spread fast; then make it wide (σx = 5). Set k₀ = 0: the packet stands still but still spreads. Compare σx·σp in Calculated values: it starts at 0.5 and grows.',
+    superposition: 'Start with levels 0 and 0 (one level): nothing moves. Choose 0 and 1: it sloshes. Try the double well with levels 0 and 1: the particle tunnels from one well to the other and back.',
+    tunneling: 'Put E just below V₀ and make the barrier thin, then thick. Compare the simulated "Transmitted" with the two formulas when the packet has passed.',
+    interference: 'Set the phase to π (3.14): the bright centre turns dark. Lower the amplitude of path 2: the fringes fade (visibility 2a/(1 + a²)).'
+  };
+  const baseDraw = drawPhysicsArea;
+  drawPhysicsArea = function (c, w, h) {
+    if (!simOn()) { baseDraw(c, w, h); return; }
+    drawSim(c, w, h); try { drawPlots(); } catch (e) { console.error(e); }
+    if (tab === 'graphs' && $('graph')) drawPhysicsGraph();
+    refreshAreaMetrics(false);
+  };
+  // the clock: model time and what it is in reality (sim time × 0.658 fs)
+  const baseClock = window.clockText;
+  window.clockText = function () { if (!simOn() || !SIM) return baseClock(); return `t = ${time.toFixed(2)} · real ${window.fmtRealTime ? fmtRealTime(SIM.ts * T0FS * 1e-15) : f(SIM.ts * T0FS) + ' fs'}`; };
+  const baseNow = window.timeNowLine;
+  window.timeNowLine = function (lang) {
+    if (!simOn() || !SIM) return baseNow ? baseNow(lang) : '';
+    const no = lang === 'no', t = SIM.ts, real = window.fmtRealTime ? fmtRealTime(t * T0FS * 1e-15, no) : f(t * T0FS) + ' fs', perSec = window.fmtRealTime ? fmtRealTime(S.speed * RATE * T0FS * 1e-15, no) : '';
+    const tag = no ? 'Tiden' : 'Time';
+    return `<span class="xp-time"><b>⏱ ${tag}:</b> ${no ? `Simuleringen har gått ${real}. Ligningen løses i steg på ${f(DT * T0FS * 1000, 1).replace('.', ',')} attosekunder. Ett sekund på skjermen er ${perSec} i virkeligheten, så alt du ser her, skjer i løpet av noen femtosekunder. Plancks konstant ħ setter tempoet: en tilstand med energi E dreier fasen med E/ħ.` : `The simulation has run for ${real}. The equation is solved in steps of ${f(DT * T0FS * 1000, 1)} attoseconds. One second on screen is ${perSec} in reality, so everything here happens within a few femtoseconds. Planck’s constant ħ sets the pace: a state with energy E turns its phase at E/ħ.`}</span>`;
+  };
+
+  // ---------------------------------------------------------------- the parameter panel
+  const sliders = m => {
+    const p = PR(m), E = k => k * k / (2 * p.mass);
+    const mass = ['mass', 'Particle mass m', .2, 5, .1, v => `${f(v, 1)} mₑ`];
+    if (m === 'packet') return [['x0', 'Start position x₀', -25, 25, .5, v => nm(v, 2)], ['sigma', 'Packet width σx', .4, 6, .1, v => nm(v, 2)], ['k', 'Wave number k₀ (momentum ħk₀)', -4, 4, .1, v => `${f(v / L0NM, 1)} nm⁻¹ · E = ${f(E(v), 2)} eV`], mass];
+    if (m === 'tunneling') return [['V0', 'Barrier height V₀', .2, 5, .1, v => `${f(v, 1)} eV`], ['a', 'Barrier width a', .1, 4, .1, v => nm(v, 2)], ['E', 'Particle energy E', .05, 8, .05, v => `${f(v, 2)} eV`], ['sigma', 'Packet width σx', 1.5, 5, .1, v => nm(v, 2)], mass];
+    if (m === 'interference') return [...(p.init === 'slits' ? [['d', 'Distance between the sources d', 4, 20, .5, v => nm(v, 2)], ['sigma', 'Width of each source σ', .3, 1.5, .05, v => nm(v, 2)]] : [['sep', 'Start distance between the packets', 10, 50, 1, v => nm(v, 1)], ['sigmaC', 'Packet width σx', 1, 5, .1, v => nm(v, 2)], ['k', 'Wave number k₀ of each packet', .5, 4, .1, v => `${f(v / L0NM, 1)} nm⁻¹ · E = ${f(E(v), 2)} eV`]]), ['amp', 'Amplitude of path 2, a', 0, 1, .05, v => f(v, 2)], ['phase', 'Relative phase φ', 0, 6.28, .05, v => `${f(v, 2)} rad`], mass];
+    const pot = p.pot === 'harmonic' ? [['omega', 'Trap frequency ħω', .2, 2, .05, v => `${f(v, 2)} eV`]] : p.pot === 'box' ? [['width', 'Box width L', 4, 30, .5, v => nm(v, 2)]] : p.pot === 'finite' ? [['width', 'Well width', 2, 20, .5, v => nm(v, 2)], ['depth', 'Well depth V₀', .5, 20, .5, v => `${f(v, 1)} eV`]] : [['dwidth', 'Distance between the two minima', 2, 8, .1, v => nm(v, 2)], ['ddepth', 'Barrier height between them', .5, 5, .1, v => `${f(v, 2)} eV`]];
+    const init = p.init === 'eigen' ? [['levelA', 'First level n₁', 0, 8, 1, v => String(v)], ['levelB', 'Second level n₂', 0, 8, 1, v => String(v)], ['mix', 'Share in level n₂, p', 0, 1, .01, v => pc(v, 0)], ['phase', 'Relative phase φ', 0, 6.28, .05, v => `${f(v, 2)} rad`]] : [['x0', 'Start position x₀', -6, 6, .1, v => nm(v, 2)], ['sigma', 'Packet width σx', .2, 3, .05, v => nm(v, 2)], ['k', 'Wave number k₀', -4, 4, .1, v => `${f(v / L0NM, 1)} nm⁻¹`]];
+    return [...pot, ...init, mass];
+  };
+  const qRange = (m, [k, label, min, max, step, fmt]) => `<label class="control-label" for="q_${k}">${label}<output id="q_${k}Out">${fmt(PR(m)[k])}</output></label><input id="q_${k}" type="range" min="${min}" max="${max}" step="${step}" value="${PR(m)[k]}">`;
+  const INTRO = {
+    packet: 'A free particle whose position is known only roughly: a Gaussian wave packet.',
+    superposition: 'A particle trapped in a well. Pick the well and how the particle starts.',
+    tunneling: 'A wave packet hits a barrier. Some of it gets through even when E < V₀.',
+    interference: 'One particle, two paths. Where the two parts of ψ overlap they interfere.'
+  };
+  function restart() { time = 0; SIM = null; metricCache.t = -1; }
+  const viewSection = m => section('VIEW', `<div class="row" id="qViewRow"><button data-qview="sim" class="${simOn(m) ? 'active' : ''}">▶ Live simulation</button><button data-qview="classic" class="${simOn(m) ? '' : 'active'}">Classic graph</button></div><p class="note">${simOn(m) ? 'The simulation solves the Schrödinger equation step by step. The classic graph shows the analytic formula.' : 'The analytic formula as a graph. The live simulation solves the Schrödinger equation step by step and shows ψ itself.'}</p>`);
+  const baseArea = buildAreaControls;
+  buildAreaControls = function () {
+    const m = S.module;
+    if (!isQ(m)) { baseArea(); return; }
+    if (!simOn(m)) { baseArea(); const box = $('controls'); if (box) { box.insertAdjacentHTML('afterbegin', viewSection(m)); bindView(); } return; }
+    const p = PR(m), a = LAB[m]; let html = viewSection(m);
+    if (m === 'superposition') html += section('EXPERIMENT', `<p class="note">Potential</p><div class="qbtns">${Object.keys(POTNAME).map(k => `<button data-qpot="${k}" class="${p.pot === k ? 'active' : ''}">${POTNAME[k]}</button>`).join('')}</div><p class="note">Start in</p><div class="qbtns">${[['eigen', 'Two energy levels'], ['gauss', 'A Gaussian packet']].map(([k, t]) => `<button data-qinit="${k}" class="${p.init === k ? 'active' : ''}">${t}</button>`).join('')}</div>`);
+    if (m === 'interference') html += section('EXPERIMENT', `<div class="qbtns">${[['slits', 'Two sources (double slit)'], ['collide', 'Two packets meet']].map(([k, t]) => `<button data-qinit="${k}" class="${p.init === k ? 'active' : ''}">${t}</button>`).join('')}</div>`);
+    html += section('EXPERIMENT PARAMETERS', `<p class="note">${INTRO[m]}</p>${sliders(m).map(s => qRange(m, s)).join('')}<p class="note">Changing a parameter restarts the simulation from t = 0, because the starting state is part of the physical system.</p><p class="note" id="qNote"></p>`);
+    html += section('NUMERICAL METHOD', `<p class="note">Crank–Nicolson: implicit, second order in time, and unitary, so the total probability stays 1 to rounding error. The second derivative uses three neighbouring points.</p><div id="qMethod"></div>${m !== 'superposition' ? check('qAbsorb', 'Absorbing edges (ψ leaves the picture instead of bouncing back)', S.qAbsorb) : ''}`);
+    html += section('CALCULATED VALUES', metricRows(a.metrics())) + section('TRY THIS', `<p class="note">${TRY[m]}</p>`) + section('SOURCES', areaSources() + '<div class="source-links"><a href="https://doi.org/10.1017/S0305004100023197" target="_blank" rel="noopener">Crank & Nicolson (1947) ↗</a><a href="https://doi.org/10.1119/1.1973991" target="_blank" rel="noopener">Goldberg, Schey & Schwartz (1967): computer films of wave packets ↗</a></div>') + `<div hidden>${check('gridCheck', 'Grid', S.grid)}${check('axesCheck', 'Axes', S.axes)}<button id="cameraReset">Camera</button></div>`;
+    $('controls').innerHTML = html;
+    bindView();
+    for (const s of sliders(m)) { const [k, , , , , fmt] = s; const el = $('q_' + k); el.oninput = e => { PR(m)[k] = +e.target.value; $('q_' + k + 'Out').textContent = fmt(PR(m)[k]); if (k === 'mass' || ['E', 'sigma'].includes(k)) refreshOuts(m); restart(); updateInfo(); renderInspector(); }; }
+    document.querySelectorAll('#controls [data-qpot]').forEach(b => b.onclick = () => { p.pot = b.dataset.qpot; restart(); buildControls(); updateInfo(); renderInspector(); });
+    document.querySelectorAll('#controls [data-qinit]').forEach(b => b.onclick = () => { p.init = b.dataset.qinit; restart(); buildControls(); updateInfo(); renderInspector(); });
+    if ($('qAbsorb')) $('qAbsorb').onchange = e => { S.qAbsorb = e.target.checked; restart(); updateInfo(); };
+    noteAndMethod();
+  };
+  function refreshOuts(m) { for (const [k, , , , , fmt] of sliders(m)) { const o = $('q_' + k + 'Out'); if (o) o.textContent = fmt(PR(m)[k]); } }
+  function noteAndMethod() {
+    const st = current(); if (!st) return; const p = st.p, n = [];
+    if (st.notes.includes('x0')) n.push(`The start position is held inside the well (x₀ = ${nm(st.x0)}).`);
+    if (st.m === 'superposition' && p.pot === 'finite' && p.init === 'eigen' && Math.max(p.levelA, p.levelB) >= st.nBound) n.push(`Only ${st.nBound} level${st.nBound === 1 ? ' is' : 's are'} bound in this well. Higher levels are above the edge and are held only by the ends of the simulated region.`);
+    if (st.m === 'superposition' && p.init === 'eigen' && p.levelA === p.levelB) n.push('Both levels are the same: a stationary state. |ψ|² stands still; only the phase turns.');
+    if (st.m === 'tunneling') n.push(p.E < p.V0 ? `E < V₀: a classical particle would always bounce back. Plane-wave formula: T = ${pc(Tplane(p.E, p.V0, p.a, p.mass))}.` : `E > V₀: a classical particle would always pass. Quantum mechanically some is still reflected: T = ${pc(Tplane(p.E, p.V0, p.a, p.mass))}.`);
+    if ($('qNote')) $('qNote').textContent = n.join(' ');
+    if ($('qMethod')) $('qMethod').innerHTML = metricRows([['Grid points N', String(st.g.N)], ['Δx', `${f(st.g.dx * L0NM * 1000, 1)} pm`], ['Δt', `${f(DT * T0FS * 1000, 1)} as`], ['Region', `${nm(-st.g.half, 1)} to ${nm(st.g.half, 1)}`]]);
+  }
+  function bindView() {
+    document.querySelectorAll('#controls [data-qview]').forEach(b => b.onclick = () => {
+      const m = S.module; S.qView[m] = b.dataset.qview; restart(); if (simOn(m)) setCam('persp');
+      buildControls(); buildPresets(); updateInfo(); renderInspector();
+    });
+  }
+  const baseBuild = buildControls;
+  buildControls = function () { baseBuild(); const m = S.module; if (isQ(m)) { const row = $('qViewRow'), sec = row && row.closest('.control-section'), box = $('controls'); if (sec && box && box.firstElementChild !== sec) box.prepend(sec); } };
+  const baseReset = resetCamera;
+  resetCamera = function () { baseReset(); if (simOn()) setCam('persp'); };
+  $('home').addEventListener('click', () => { if (simOn()) setCam('persp'); });
+  $('scene').addEventListener('dblclick', () => { if (simOn()) setCam('persp'); });
+  // the guided tour describes the simulation, not the old analytic graph
+  const baseTour = tourSteps;
+  tourSteps = function () { return baseTour().map(s => isQ(s.module) ? { ...s, text: `${DESC[s.module]} ${SIMEX[s.module].happens}`, try: TRY[s.module] + ' The VIEW switch at the top of the parameters shows the analytic graph.' } : s); };
+  const baseSelect = selectModule;
+  selectModule = function (m) { const was = S.module; baseSelect(m); if (simOn(m) && was !== m) { setCam('persp'); restart(); } };
+  // presets: instructive starting points for the simulation
+  const basePresets = physicsPresets;
+  physicsPresets = function () {
+    const P0 = basePresets();
+    const set = (m, o, extra) => () => { S.qp[m] = { ...clone(DEF[m]), ...o }; if (extra) Object.assign(S, extra); restart(); };
+    const sim = {
+      packet: [['Default packet', 'σx = 0.55 nm, moving right', set('packet', {})], ['Narrow packet', 'Spreads fast: σp is large', set('packet', { sigma: .6, k: 1.5, x0: -10 })], ['Wide packet', 'Hardly spreads', set('packet', { sigma: 5, k: 2, x0: -20 })], ['Packet at rest', 'k₀ = 0: it spreads but does not move', set('packet', { x0: 0, k: 0, sigma: 1 })], ['Heavier particle', 'm = 4 mₑ: slower and spreads less', set('packet', { mass: 4, k: 3 })]],
+      superposition: [['Two lowest levels', 'Harmonic trap: the density sloshes', set('superposition', {})], ['One level only', 'A stationary state: nothing moves', set('superposition', { levelB: 0, mix: 0 })], ['Displaced packet in the trap', 'Swings like a pendulum without spreading', set('superposition', { init: 'gauss', x0: 3, sigma: .7071 })], ['Particle in a box', 'A packet bounces and comes back whole', set('superposition', { pot: 'box', width: 12, init: 'gauss', x0: -2, sigma: .8, k: 3 })], ['Double well', 'Tunnels from one well to the other', set('superposition', { pot: 'double', dwidth: 5, ddepth: 1.2, levelA: 0, levelB: 1, mix: .5 })], ['Finite well', 'Levels 0 and 2 in a 6 eV well', set('superposition', { pot: 'finite', width: 8, depth: 6, levelA: 0, levelB: 2 })]],
+      tunneling: [['Below the barrier', 'E = 1 eV, V₀ = 2 eV: some leaks through', set('tunneling', {})], ['Thick barrier', 'Almost nothing gets through', set('tunneling', { a: 3 })], ['Thin barrier', 'Most gets through even below V₀', set('tunneling', { a: .3 })], ['Above the barrier', 'E > V₀, yet some is reflected', set('tunneling', { E: 3, V0: 2, a: 2 })], ['Heavier particle', 'm = 4 mₑ tunnels much less', set('tunneling', { mass: 4 })]],
+      interference: [['Double slit', 'Two narrow sources spread and overlap', set('interference', {})], ['Phase π', 'The bright centre turns dark', set('interference', { phase: Math.PI })], ['Weaker second path', 'a = 0.3: fringes fade', set('interference', { amp: .3 })], ['Two packets meet', 'A standing pattern where they cross', set('interference', { init: 'collide' })]]
+    };
+    for (const m of Q) if (simOn(m)) P0[m] = sim[m];
+    return P0;
+  };
+  // the Model details tab
+  const baseInsp = renderAreaInspector;
+  renderAreaInspector = function () {
+    if (!simOn() || tab !== 'math') { baseInsp(); return; }
+    const m = S.module;
+    $('inspectorContent').innerHTML = `<div class="formula">iħ ∂ψ/∂t = −(ħ²/2m) ∂²ψ/∂x² + V(x) ψ</div><details class="model-detail" open><summary>What is computed</summary><p>${DESC[m]}</p><p>The starting state ψ(x, 0) is set by the parameters. Each step solves (1 + iΔt H/2ħ) ψⁿ⁺¹ = (1 − iΔt H/2ħ) ψⁿ, with H = −(ħ²/2m) d²/dx² + V(x) on a grid of N points. This keeps the norm exactly (for the discrete equation) and is accurate to second order in Δt and Δx.</p></details><details class="model-detail"><summary>Units</summary><p>ħ = 1 and energies in eV. For an electron the length unit is ħ/√(mₑ · 1 eV) = 0.276 nm and the time unit ħ/(1 eV) = 0.658 fs. All axes are converted to nm, eV and fs.</p></details><details class="model-detail"><summary>Assumptions and limits</summary><p>One particle in one dimension, no spin, no magnetic field, no environment and no measurement. The region is finite: without absorbing edges ψ bounces at the ends. Absorbing edges add −iW(x) near the ends and count what they remove. ${m === 'tunneling' ? 'A packet has a spread of energies, so its transmission is an average of T(E) over the packet.' : ''}</p></details><details class="model-detail"><summary>Current calculated values</summary><div id="liveDiagnostics">${metricRows(LAB[m].metrics())}</div></details>`;
+  };
+  // "What happens here" under the picture
+  const SIMEX = {
+    packet: { see: 'ψ(x, t) of a free particle, computed step by step. Each point along x carries a complex number: up is the real part, depth is the imaginary part, so ψ traces a corkscrew. The colour is the phase; the ribbon is most opaque where |ψ|² is largest.', happens: 'The packet is a sum of plane waves with wave numbers near k₀. Their phases turn at ω = ħk²/2m, a little differently for each k, so the packet moves at ħk₀/m and spreads. The corkscrew turns once per wavelength 2π/k₀.', analogy: 'A short pulse in an optical fibre: it travels and broadens because different frequencies travel at slightly different speeds (dispersion).', real: 'Calculated: the Schrödinger equation is solved numerically (Crank–Nicolson) on a grid. The picture of ψ is a mathematical drawing; Re and Im are not directions in space.' },
+    superposition: { see: 'ψ(x, t) of a particle in a well, computed step by step, with the potential and the energy levels on the back wall and in the right plot.', happens: 'An energy eigenstate only turns its phase at E/ħ, so |ψ|² stands still. A mix of two levels contains two phase speeds; their difference makes the density slosh with period h/(E₂ − E₁).', analogy: 'Two modes of a structure excited at once give a beat; the beat frequency is the difference of the two mode frequencies.', real: 'Calculated: the levels are the exact eigenvalues of the discretised Hamiltonian, and ψ is evolved with Crank–Nicolson.' },
+    tunneling: { see: 'A wave packet running into a barrier (the orange slab), computed step by step. After the collision part of ψ is on each side.', happens: 'Inside the barrier ψ does not oscillate but decays. If the barrier is thin enough, some of ψ is left at the far side and travels on. The share that ends up on the right is the transmission probability.', analogy: 'Light leaking across a thin air gap between two glass prisms (frustrated total reflection).', real: 'Calculated: the simulated transmission is compared with the exact plane-wave formula and with its average over the energies in the packet.' },
+    interference: { see: 'One wavefunction made of two parts, ψ = ψ₁ + ψ₂, computed step by step. The left plot shows |ψ₁|², |ψ₂|² and the interference term separately.', happens: 'Probabilities do not add; amplitudes do. |ψ₁ + ψ₂|² = |ψ₁|² + |ψ₂|² + 2Re(ψ₁*ψ₂), and the last term makes fringes. The relative phase φ shifts them.', analogy: 'Two loudspeakers playing the same tone: loud and quiet spots in the room.', real: 'Calculated with Crank–Nicolson; the fringe spacing is compared with the exact result for two spreading Gaussian sources.' }
+  };
+  for (const m of Q) { const base = EXPLAIN[m]; EXPLAIN[m] = () => simOn(m) ? SIMEX[m] : (typeof base === 'function' ? base() : base); }
+
+  // ---------------------------------------------------------------- explanation panel (Norwegian and English)
+  const XO = {
+    packet: {
+      no: { short: 'En numerisk løsning av den tidsavhengige Schrödinger-ligningen for en fri partikkel (et elektron, hvis du ikke endrer massen). ψ(x, t) er tegnet langs x: høyden er realdelen, dybden er imaginærdelen og fargen er fasen. Under bildet ser du |ψ|², Re og Im, og potensialet.', analogy: 'En kort lyspuls i en glassfiber: den går framover og blir bredere fordi ulike frekvenser går med litt ulik fart (dispersjon). Her er det massen som gir dispersjonen: ω = ħk²/2m.', world: 'Korketrekkeren er ψ, ikke partikkelen. Partikkelen er ikke på kurven, og ψ er ikke en bølge i det fysiske rommet: Re og Im er ikke retninger. Det som kan måles, er |ψ|², sjansen for å finne partikkelen. En smal pakke inneholder mange bølgelengder og sprer seg fort (σx·σp ≥ ħ/2). Elektronene i et elektronmikroskop er slike pakker.' },
+      en: { short: 'A numerical solution of the time-dependent Schrödinger equation for a free particle (an electron unless you change the mass). ψ(x, t) is drawn along x: height is the real part, depth is the imaginary part and colour is the phase. Under the picture you see |ψ|², Re and Im, and the potential.', analogy: 'A short light pulse in an optical fibre: it moves on and broadens because different frequencies travel at slightly different speeds (dispersion). Here the mass causes the dispersion: ω = ħk²/2m.', world: 'The corkscrew is ψ, not the particle. The particle is not on the curve, and ψ is not a wave in physical space: Re and Im are not directions. What can be measured is |ψ|², the chance of finding the particle. A narrow packet contains many wavelengths and spreads fast (σx·σp ≥ ħ/2). The electrons in an electron microscope are packets like this.' }
+    },
+    superposition: {
+      no: { short: 'En partikkel fanget i en brønn. Velg brønnen (harmonisk felle, boks, endelig brønn eller dobbeltbrønn) og starttilstanden. Ligningen løses steg for steg. Ett energinivå alene står stille (bare fasen dreier); en blanding av to skvulper.', analogy: 'Svingemodene til en gitarstreng eller en bro: hver mode har sin frekvens, og to moder samtidig gir sveving. I kvantemekanikken er frekvensen E/h.', world: 'Slik oppfører elektroner seg i atomer, molekyler og kvanteprikker. Fargen til en kvanteprikk i en QLED-skjerm bestemmes av hvor stor «boksen» er. I dobbeltbrønnen tunnelerer partikkelen fram og tilbake; det er prinsippet bak ammoniakkmaseren fra 1954.' },
+      en: { short: 'A particle trapped in a well. Choose the well (harmonic trap, box, finite well or double well) and the starting state. The equation is solved step by step. One energy level alone stands still (only its phase turns); a mix of two sloshes.', analogy: 'The modes of a guitar string or a bridge: each mode has its own frequency, and two modes at once give a beat. In quantum mechanics the frequency is E/h.', world: 'This is how electrons behave in atoms, molecules and quantum dots. The colour of a quantum dot in a QLED screen is set by the size of the “box”. In the double well the particle tunnels back and forth; that is the principle of the ammonia maser from 1954.' }
+    },
+    tunneling: {
+      no: { short: 'En bølgepakke sendes mot en barriere (den oransje platen). Ligningen løses steg for steg, og du ser hvor mye som blir kastet tilbake og hvor mye som slipper gjennom. Tallene sammenlignes med den eksakte formelen.', analogy: 'Lys som lekker over en tynn luftspalte mellom to glassprismer (forhindret totalrefleksjon), eller et felt som lekker gjennom en bølgeleder under kuttfrekvensen.', world: 'Pakken deler seg, men partikkelen gjør ikke det: ved en måling finner du den enten til venstre eller til høyre, med sjansene du ser. Tunnelering lar sola fusjonere hydrogen, forklarer alfahenfall, og brukes i flashminne og i sveipetunnelmikroskop.' },
+      en: { short: 'A wave packet is sent towards a barrier (the orange slab). The equation is solved step by step, and you see how much is thrown back and how much gets through. The numbers are compared with the exact formula.', analogy: 'Light leaking across a thin air gap between two glass prisms (frustrated total reflection), or a field leaking through a waveguide below cut-off.', world: 'The packet splits, but the particle does not: a measurement finds it either on the left or on the right, with the chances you see. Tunnelling lets the Sun fuse hydrogen, explains alpha decay, and is used in flash memory and scanning tunnelling microscopes.' }
+    },
+    interference: {
+      no: { short: 'To deler av én og samme bølgefunksjon, som to spalter eller to veier. Der de overlapper, legges amplitudene sammen før de kvadreres, og |ψ|² får striper. Grafen til venstre viser |ψ₁|², |ψ₂|² og interferensleddet 2 Re(ψ₁*ψ₂) hver for seg.', analogy: 'To høyttalere som spiller samme tone, eller to steiner kastet i vannet: bølgetoppene forsterker eller opphever hverandre.', world: 'Elektroner, nøytroner og hele molekyler (C₆₀) gir slike striper, én partikkel om gangen. Stripeavstanden vokser som 2πħt/(md), samme regel som i dobbeltspalteforsøket. Med fasen φ = π bytter lyse og mørke striper plass.' },
+      en: { short: 'Two parts of one and the same wavefunction, like two slits or two paths. Where they overlap, the amplitudes add before squaring, and |ψ|² gets fringes. The left plot shows |ψ₁|², |ψ₂|² and the interference term 2 Re(ψ₁*ψ₂) separately.', analogy: 'Two loudspeakers playing the same tone, or two stones thrown into water: wave crests reinforce or cancel each other.', world: 'Electrons, neutrons and whole molecules (C₆₀) give such fringes, one particle at a time. The fringe spacing grows as 2πħt/(md), the same rule as in the double-slit experiment. With phase φ = π bright and dark fringes swap places.' }
+    }
+  };
+  window.xpOverride = (m, lang) => simOn(m) && XO[m] ? XO[m][lang] : null;
+  window.xpNowOverride = (m, lang) => {
+    if (!simOn(m) || !SIM || SIM.m !== m) return null;
+    const no = lang === 'no', T = (a, b) => no ? a : b, d = s => no ? String(s).replace(/(\d)\.(\d)/g, '$1,$2') : s;
+    const st = SIM, p = st.p, s = stats(st), out = [];
+    if (m === 'packet') {
+      out.push(d(T(`Pakken er nå ved ⟨x⟩ = ${nm(s.x)} og går ${p.k >= 0 ? 'mot høyre' : 'mot venstre'} med farten ħk₀/m = ${sciT(Math.abs(p.k) / p.mass * V_UNIT)} m/s.`, `The packet is now at ⟨x⟩ = ${nm(s.x)}, moving ${p.k >= 0 ? 'right' : 'left'} at ħk₀/m = ${sciT(Math.abs(p.k) / p.mass * V_UNIT)} m/s.`)));
+      out.push(d(T(`Bredden har vokst fra ${nm(p.sigma)} til ${nm(s.sx)}. σx·σp = ${f(s.sx * s.sk, 2)} ħ (aldri under 0,5 ħ).`, `Its width has grown from ${nm(p.sigma)} to ${nm(s.sx)}. σx·σp = ${f(s.sx * s.sk, 2)} ħ (never below 0.5 ħ).`)));
+    } else if (m === 'tunneling') {
+      const sp = sideProb(st), Tp = Tplane(p.E, p.V0, p.a, p.mass), Ta = Tpacket(p);
+      out.push(d(T(`E = ${f(p.E, 2)} eV mot en barriere på V₀ = ${f(p.V0, 2)} eV: ${p.E < p.V0 ? 'under toppen, så en klassisk partikkel ville alltid blitt kastet tilbake' : 'over toppen, så en klassisk partikkel ville alltid kommet gjennom'}.`, `E = ${f(p.E, 2)} eV against a barrier of V₀ = ${f(p.V0, 2)} eV: ${p.E < p.V0 ? 'below the top, so a classical particle would always bounce back' : 'above the top, so a classical particle would always get through'}.`)));
+      const done = st.ts > tunnelDone(st);
+      out.push(d(done ? T(`Etter kollisjonen: ${pc(sp.R)} gikk gjennom og ${pc(sp.L)} ble kastet tilbake. Formelen gir T = ${pc(Tp)} for en plan bølge og ${pc(Ta)} i snitt over pakkens energier.`, `After the collision ${pc(sp.R)} got through and ${pc(sp.L)} was thrown back. The formula gives T = ${pc(Tp)} for a plane wave and ${pc(Ta)} averaged over the packet’s energies.`) : T(`Kollisjonen pågår: ${pc(sp.R)} er på høyre side og ${pc(sp.L)} på venstre side. Når den er over, ventes T = ${pc(Ta)} (snitt over pakkens energier; ${pc(Tp)} for en plan bølge).`, `The collision is under way: ${pc(sp.R)} is on the right and ${pc(sp.L)} on the left. When it is over, T = ${pc(Ta)} is expected (averaged over the packet’s energies; ${pc(Tp)} for a plane wave).`)));
+    } else if (m === 'interference') {
+      const fr = fringe(st), vis = 2 * p.amp / (1 + p.amp * p.amp);
+      out.push(d(T(p.init === 'slits' ? `To smale kilder ${nm(p.d)} fra hverandre sprer seg og overlapper. Forventet stripeavstand nå: ${Number.isFinite(fr) ? nm(fr) : 'uendelig (ingen overlapp ennå)'}.` : `To pakker møtes. Der de overlapper, blir det striper med avstand π/k₀ = ${nm(fr)}.`, p.init === 'slits' ? `Two narrow sources ${nm(p.d)} apart spread and overlap. Expected fringe spacing now: ${Number.isFinite(fr) ? nm(fr) : 'infinite (no overlap yet)'}.` : `Two packets meet. Where they overlap there are fringes π/k₀ = ${nm(fr)} apart.`)));
+      out.push(d(T(`Relativ fase φ = ${f(p.phase, 2)} rad${Math.abs(p.phase - Math.PI) < .1 ? ' (π: mørk midte)' : ''}. Synlighet ${pc(vis, 0)}.`, `Relative phase φ = ${f(p.phase, 2)} rad${Math.abs(p.phase - Math.PI) < .1 ? ' (π: dark centre)' : ''}. Visibility ${pc(vis, 0)}.`)));
+    } else {
+      const E = st.eig.E, name = no ? POTNO[p.pot] : POTNAME[p.pot].toLowerCase();
+      if (p.init === 'eigen' && p.levelA !== p.levelB && p.mix > 0 && p.mix < 1) out.push(d(T(`Brønn: ${name}. Tilstanden er ${pc(1 - p.mix, 0)} nivå ${p.levelA} og ${pc(p.mix, 0)} nivå ${p.levelB}, så tettheten svinger med perioden h/(E${p.levelB} − E${p.levelA}) = ${sciT(2 * Math.PI / Math.abs(E[p.levelB] - E[p.levelA]) * T0FS)} fs.`, `Well: ${name}. The state is ${pc(1 - p.mix, 0)} level ${p.levelA} and ${pc(p.mix, 0)} level ${p.levelB}, so the density oscillates with period h/(E${p.levelB} − E${p.levelA}) = ${sciT(2 * Math.PI / Math.abs(E[p.levelB] - E[p.levelA]) * T0FS)} fs.`)));
+      else if (p.init === 'eigen') out.push(d(T(`Brønn: ${name}. Partikkelen er i ett energinivå (E = ${f(E[p.mix >= 1 ? p.levelB : p.levelA], 3)} eV), så |ψ|² står stille. Bare fasen dreier, med E/ħ.`, `Well: ${name}. The particle is in one energy level (E = ${f(E[p.mix >= 1 ? p.levelB : p.levelA], 3)} eV), so |ψ|² stands still. Only the phase turns, at E/ħ.`)));
+      else out.push(d(T(`Brønn: ${name}. En gaussisk pakke startet ved x₀ = ${nm(st.x0)}. Den er en blanding av mange nivåer, så den beveger seg. Nå: ⟨x⟩ = ${nm(s.x)}.`, `Well: ${name}. A Gaussian packet started at x₀ = ${nm(st.x0)}. It is a mix of many levels, so it moves. Now ⟨x⟩ = ${nm(s.x)}.`)));
+      out.push(d(T(`Middelenergien ⟨E⟩ = ${f(s.E, 3)} eV holder seg konstant, og total sannsynlighet er ${f(s.norm, 6)}.`, `The mean energy ⟨E⟩ = ${f(s.E, 3)} eV stays constant, and the total probability is ${f(s.norm, 6)}.`)));
+    }
+    if (!S.playing) out.push(T('Tiden står stille (pause). Trykk ▶ under bildet.', 'Time is paused. Press ▶ under the picture.'));
+    return out;
+  };
+  const XM = {
+    q_x0: ['Hvor pakken starter. Posisjonen er midten av den gaussiske klokken.', 'Where the packet starts: the centre of the Gaussian bell.'],
+    q_sigma: ['Bredden σx til pakken. Smal pakke = stor spredning i bevegelsesmengde (σp = ħ/2σx), så den sprer seg fortere.', 'The width σx of the packet. Narrow packet = large momentum spread (σp = ħ/2σx), so it spreads faster.'],
+    q_sigmaC: ['Bredden σx til hver av de to pakkene.', 'The width σx of each of the two packets.'],
+    q_k: ['Bølgetallet k₀. Bevegelsesmengden er p = ħk₀ og bølgelengden 2π/k₀. Negativt tall: pakken går mot venstre.', 'The wave number k₀. The momentum is p = ħk₀ and the wavelength 2π/k₀. A negative number moves the packet to the left.'],
+    q_mass: ['Massen til partikkelen, i elektronmasser. Tyngre partikler går saktere for samme k, sprer seg mindre og tunnelerer mye mindre.', 'The mass of the particle, in electron masses. Heavier particles move slower for the same k, spread less and tunnel much less.'],
+    q_V0: ['Høyden V₀ på barrieren, i eV.', 'The height V₀ of the barrier, in eV.'],
+    q_a: ['Bredden a på barrieren. Under toppen faller T omtrent som e^(−2κa), så litt bredere gir mye mindre.', 'The width a of the barrier. Below the top T falls roughly as e^(−2κa), so a little wider gives much less.'],
+    q_E: ['Energien til partikkelen (midten av pakken). k₀ = √(2mE)/ħ.', 'The energy of the particle (the centre of the packet). k₀ = √(2mE)/ħ.'],
+    q_omega: ['Frekvensen til fella. Nivåene ligger med lik avstand ħω.', 'The frequency of the trap. The levels are evenly spaced by ħω.'],
+    q_width: ['Bredden på brønnen. Bredere brønn gir lavere og tettere nivåer (Eₙ ∝ n²/L² i en boks).', 'The width of the well. A wider well gives lower, closer levels (Eₙ ∝ n²/L² in a box).'],
+    q_depth: ['Dybden på brønnen. Bare nivåer under kanten er bundet.', 'The depth of the well. Only levels below the edge are bound.'],
+    q_dwidth: ['Avstanden mellom de to bunnene i dobbeltbrønnen. Lengre avstand gir mye langsommere tunnelering.', 'The distance between the two minima of the double well. A longer distance makes tunnelling much slower.'],
+    q_ddepth: ['Høyden på barrieren mellom de to bunnene.', 'The height of the barrier between the two minima.'],
+    q_levelA: ['Det første energinivået i blandingen (0 er grunntilstanden).', 'The first energy level in the mix (0 is the ground state).'],
+    q_levelB: ['Det andre energinivået i blandingen.', 'The second energy level in the mix.'],
+    q_mix: ['Hvor stor del som er i nivå n₂. 0 eller 1 gir én ren tilstand som står stille.', 'How much is in level n₂. 0 or 1 gives one pure state that stands still.'],
+    q_phase: ['Den relative fasen mellom de to delene. Den bestemmer hvor stripene eller skvulpingen starter.', 'The relative phase between the two parts. It decides where the fringes or the sloshing start.'],
+    q_d: ['Avstanden mellom de to kildene (spaltene). Større avstand gir tettere striper.', 'The distance between the two sources (slits). A larger distance gives closer fringes.'],
+    q_sep: ['Hvor langt fra hverandre de to pakkene starter.', 'How far apart the two packets start.'],
+    q_amp: ['Amplituden til vei 2 sammenlignet med vei 1. Ulike amplituder gir svakere striper.', 'The amplitude of path 2 compared with path 1. Unequal amplitudes give weaker fringes.'],
+    qAbsorb: ['Lar ψ forsvinne ut ved kantene, som om rommet fortsatte. Av: kantene er harde vegger, og ψ spretter tilbake.', 'Lets ψ leave at the edges, as if space went on. Off: the edges are hard walls and ψ bounces back.'],
+    'data-qview': ['Bytter mellom den levende simuleringen (ligningen løses steg for steg) og den klassiske grafen av formelen.', 'Switches between the live simulation (the equation solved step by step) and the classic graph of the formula.'],
+    'data-qpot': ['Velger potensialet partikkelen er fanget i.', 'Chooses the potential the particle is trapped in.'],
+    'superposition.data-qinit': ['Starttilstanden: en blanding av to energinivåer, eller en gaussisk pakke (en blanding av mange nivåer).', 'The starting state: a mix of two energy levels, or a Gaussian packet (a mix of many levels).'],
+    'interference.data-qinit': ['To smale kilder som sprer seg (dobbeltspalte), eller to pakker som går mot hverandre.', 'Two narrow sources that spread (double slit), or two packets moving towards each other.']
+  };
+  if (window.xpMeanings) Object.assign(window.xpMeanings, XM);
+
+  window.__sch = { build, advance, stats, sideProb, Tplane, Tpacket, populations, fringe, current: () => SIM }; // for the test scripts
+  // start in the simulation if the lab opens on one of these views
+  if (simOn()) { setCam('persp'); buildControls(); buildPresets(); updateInfo(); renderInspector(); }
 })();
 
 </script><script>
